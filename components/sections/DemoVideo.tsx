@@ -37,10 +37,12 @@ export function DemoVideo() {
             poster="/poster-placeholder.svg"
             className="w-full aspect-video bg-zinc-900"
           >
-            <source
-              src={process.env.NEXT_PUBLIC_DEMO_VIDEO_URL || ""}
-              type="video/mp4"
-            />
+            {process.env.NEXT_PUBLIC_DEMO_VIDEO_URL && (
+              <source
+                src={process.env.NEXT_PUBLIC_DEMO_VIDEO_URL}
+                type="video/mp4"
+              />
+            )}
             Your browser does not support the video tag.
           </video>
         </motion.div>
