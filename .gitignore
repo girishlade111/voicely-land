@@ -1,0 +1,75 @@
+```
+# Dependencies
+node_modules/
+
+# Environment variables
+.env.local
+.env
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git/
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
+
+# Node related
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+node_modules/
+dist/
+public/dist/
+.nuxt/
+output/
+.next/
+coverage/
+*.min.js
+*.min.css
+
+# Next.js
+.next/
+out/
+
+# Supabase
+supabase/
+
+# TypeScript
+*.tsbuildinfo
+```
