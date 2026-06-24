@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://voicely.app"),
   title: "Voicely — Voice to Text for Desktop. Free.",
   description:
     "Voicely lets you speak and type anywhere on your desktop. Supports Hindi, Marathi & English. Privacy-first. No data stored. Free to start.",
