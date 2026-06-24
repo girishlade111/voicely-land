@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
-import { resend } from "@/lib/resend";
+import { getResend } from "@/lib/resend";
 
 /*
   Supabase table schema:
@@ -33,8 +33,17 @@ export async function POST(request: NextRequest) {
     }
 
     const normalizedEmail = email.trim().toLowerCase();
+    const admin = supabaseAdmin;
 
-    const { data: existing } = await supabaseAdmin
+    if (!admin) {
+      console.error("Supabase admin client not initialized - missing env vars");
+      return NextResponse.json(
+        { success: false, message: "Something went wrong. Please try again." },
+        { status: 500 }
+      );
+    }
+
+    const { data: existing } = await admin
       .from("waitlist_emails")
       .select("id")
       .eq("email", normalizedEmail)
@@ -47,7 +56,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { error: insertError } = await supabaseAdmin
+    const { error: insertError } = await admin
       .from("waitlist_emails")
       .insert({ email: normalizedEmail, source: "landing_page" });
 
@@ -60,6 +69,7 @@ export async function POST(request: NextRequest) {
     }
 
     try {
+      const resend = getResend();
       await resend.emails.send({
         from: "Voicely Team <hello@voicely.app>",
         to: normalizedEmail,
