@@ -8,7 +8,7 @@ const steps = [
   {
     number: "01",
     title: "Download & Install",
-    description: "One installer. Works on Mac and Windows. Ready in under 2 minutes.",
+    description: "One installer. Built for Mac. Ready in under 2 minutes on macOS 12 Monterey or above.",
   },
   {
     number: "02",

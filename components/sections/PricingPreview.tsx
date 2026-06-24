@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 const starterFeatures = [
   "30 minutes of voice input per day",
   "English + 1 Indian language",
-  "Works with any desktop app",
+  "Works with any Mac app",
   "Basic voice commands",
   "No account required",
 ];

@@ -20,7 +20,11 @@ const faqs = [
   },
   {
     q: "Which apps does Voicely work with?",
-    a: "Voicely works with any application on your desktop — Gmail, Google Docs, Notion, VS Code, Slack, Microsoft Word, browsers, and more. If you can type in it, Voicely can type in it for you.",
+    a: "Voicely works with any application on your Mac — Gmail, Google Docs, Notion, VS Code, Slack, Microsoft Word, Safari, Chrome, and more. If you can type in it on a Mac, Voicely can type in it for you.",
+  },
+  {
+    q: "What Mac do I need to run Voicely?",
+    a: "Voicely requires macOS 12 Monterey or later. It works on all Apple Silicon Macs (M1, M2, M3, M4) and Intel-based Macs with a Core i5 processor or better, and at least 4 GB of RAM. No special microphone or hardware required — your Mac's built-in microphone works perfectly.",
   },
   {
     q: "Is my voice being recorded or stored?",

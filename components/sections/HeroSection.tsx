@@ -5,7 +5,6 @@ import { motion, useInView } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 
 function CountUp({ to, label }: { to: number; label: string }) {
   const ref = useRef(null);
@@ -66,9 +65,9 @@ export function HeroSection() {
             </h1>
 
             <p className="text-lg text-zinc-500 max-w-lg mb-8 leading-relaxed">
-              Voicely turns your voice into text across every app on your desktop
-              &mdash; faster than you can type, smarter than you expect. Supports
-              Hindi, Marathi &amp; English.
+              Voicely turns your voice into text across every app on your
+              Mac &mdash; faster than you can type, smarter than you expect.
+              Supports Hindi, Marathi &amp; English. Available on macOS 12+.
             </p>
 
             {status === "success" ? (
