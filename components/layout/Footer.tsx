@@ -1,56 +1,96 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { Mic } from "lucide-react";
 
 export function Footer() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-white border-t border-zinc-100">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-3">
-              <Mic className="h-5 w-5 text-accent" />
-              <span className="text-lg font-bold text-zinc-900">Voicely</span>
-            </Link>
-            <p className="text-sm text-zinc-500 mb-4">Voice typing for everyone.</p>
-            <p className="text-xs text-zinc-400">
-              &copy; {currentYear} Voicely. All rights reserved.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold text-zinc-900 mb-4">Product</h4>
-            <ul className="space-y-3">
-              <li><button onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })} className="text-sm text-zinc-500 hover:text-zinc-900">Features</button></li>
-              <li><button onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })} className="text-sm text-zinc-500 hover:text-zinc-900">How It Works</button></li>
-              <li><button onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })} className="text-sm text-zinc-500 hover:text-zinc-900">Pricing</button></li>
-              <li><span className="text-sm text-zinc-300 cursor-not-allowed" title="Coming Soon">Download</span></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold text-zinc-900 mb-4">Company</h4>
-            <ul className="space-y-3">
-              <li><span className="text-sm text-zinc-300 cursor-not-allowed">About</span></li>
-              <li><span className="text-sm text-zinc-300 cursor-not-allowed">Blog</span></li>
-              <li><a href="mailto:hello@voicely.app" className="text-sm text-zinc-500 hover:text-zinc-900">Contact</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold text-zinc-900 mb-4">Legal</h4>
-            <ul className="space-y-3">
-              <li><Link href="/privacy-policy" className="text-sm text-zinc-500 hover:text-zinc-900">Privacy Policy</Link></li>
-              <li><Link href="/terms-of-service" className="text-sm text-zinc-500 hover:text-zinc-900">Terms of Service</Link></li>
-              <li><Link href="/refund-policy" className="text-sm text-zinc-500 hover:text-zinc-900">Refund Policy</Link></li>
-            </ul>
-          </div>
+          {[
+            {
+              key: "brand",
+              cols: "col-span-2 md:col-span-1",
+              content: (
+                <>
+                  <Link href="/" className="flex items-center gap-2 mb-3">
+                    <Mic className="h-5 w-5 text-accent" />
+                    <span className="text-lg font-bold text-zinc-900">Voicely</span>
+                  </Link>
+                  <p className="text-sm text-zinc-500 mb-4">Voice typing for everyone.</p>
+                  <p className="text-xs text-zinc-400">&copy; {currentYear} Voicely. All rights reserved.</p>
+                </>
+              ),
+            },
+            {
+              key: "product",
+              cols: "",
+              content: (
+                <>
+                  <h4 className="text-sm font-semibold text-zinc-900 mb-4">Product</h4>
+                  <ul className="space-y-3">
+                    <li><button onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })} className="text-sm text-zinc-500 hover:text-zinc-900">Features</button></li>
+                    <li><button onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })} className="text-sm text-zinc-500 hover:text-zinc-900">How It Works</button></li>
+                    <li><button onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })} className="text-sm text-zinc-500 hover:text-zinc-900">Pricing</button></li>
+                    <li><span className="text-sm text-zinc-300 cursor-not-allowed" title="Coming Soon">Download</span></li>
+                  </ul>
+                </>
+              ),
+            },
+            {
+              key: "company",
+              cols: "",
+              content: (
+                <>
+                  <h4 className="text-sm font-semibold text-zinc-900 mb-4">Company</h4>
+                  <ul className="space-y-3">
+                    <li><span className="text-sm text-zinc-300 cursor-not-allowed">About</span></li>
+                    <li><span className="text-sm text-zinc-300 cursor-not-allowed">Blog</span></li>
+                    <li><a href="mailto:hello@voicely.app" className="text-sm text-zinc-500 hover:text-zinc-900">Contact</a></li>
+                  </ul>
+                </>
+              ),
+            },
+            {
+              key: "legal",
+              cols: "",
+              content: (
+                <>
+                  <h4 className="text-sm font-semibold text-zinc-900 mb-4">Legal</h4>
+                  <ul className="space-y-3">
+                    <li><Link href="/privacy-policy" className="text-sm text-zinc-500 hover:text-zinc-900">Privacy Policy</Link></li>
+                    <li><Link href="/terms-of-service" className="text-sm text-zinc-500 hover:text-zinc-900">Terms of Service</Link></li>
+                    <li><Link href="/refund-policy" className="text-sm text-zinc-500 hover:text-zinc-900">Refund Policy</Link></li>
+                  </ul>
+                </>
+              ),
+            },
+          ].map((col, i) => (
+            <motion.div
+              key={col.key}
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className={col.cols}
+            >
+              {col.content}
+            </motion.div>
+          ))}
         </div>
 
-        <div className="mt-10 pt-6 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-10 pt-6 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
           <p className="text-xs text-zinc-400">
             &copy; {currentYear} Voicely. All rights reserved.
           </p>
@@ -65,7 +105,7 @@ export function Footer() {
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M13.6 8.4H10.8v3.2h2.8c.9 0 1.6-.7 1.6-1.6s-.7-1.6-1.6-1.6zM12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm3.2 12c0 1.8-1.4 3.2-3.2 3.2H10.8V17c0 .4-.3.8-.8.8s-.8-.3-.8-.8v-5.2V8.2c0-.4.3-.8.8-.8h3.2c1.8 0 3.2 1.4 3.2 3.2V12z"/></svg>
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
