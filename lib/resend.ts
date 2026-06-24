@@ -1,9 +1,9 @@
-let resendClient: import("resend").Resend | null = null;
+let resendInstance: import("resend").Resend | null = null;
 
-export function getResend() {
-  if (!resendClient) {
-    const { Resend } = require("resend");
-    resendClient = new Resend(process.env.RESEND_API_KEY || "");
+export async function getResend() {
+  if (!resendInstance) {
+    const { Resend } = await import("resend");
+    resendInstance = new Resend(process.env.RESEND_API_KEY || "");
   }
-  return resendClient;
+  return resendInstance;
 }
