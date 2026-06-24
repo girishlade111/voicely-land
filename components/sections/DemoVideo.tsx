@@ -34,7 +34,7 @@ export function DemoVideo() {
           <video
             controls
             preload="none"
-            poster="/poster-placeholder.jpg"
+            poster="/poster-placeholder.svg"
             className="w-full aspect-video bg-zinc-900"
           >
             <source

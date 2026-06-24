@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Voicely",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
       },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "Voicely — Voice to Text for Desktop. Free.",
     description:
       "Voicely lets you speak and type anywhere on your desktop. Supports Hindi, Marathi & English.",
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
   },
   robots: {
     index: true,
