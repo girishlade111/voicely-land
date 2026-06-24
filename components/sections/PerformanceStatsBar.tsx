@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 interface StatConfig {
   target: number;
@@ -55,7 +55,10 @@ const StatBlock = ({ config, isInView, delay, hasDivider }: StatBlockProps) => {
   }, [isInView, delay, config.target]);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: delay, ease: "easeOut" }}
       className={`flex flex-col items-center text-center py-4 ${
         hasDivider ? "md:border-r md:border-indigo-500" : ""
       }`}
@@ -65,7 +68,7 @@ const StatBlock = ({ config, isInView, delay, hasDivider }: StatBlockProps) => {
       </div>
       <p className="text-sm text-indigo-200 mb-0.5">{config.label}</p>
       <p className="text-xs text-indigo-300">{config.sublabel}</p>
-    </div>
+    </motion.div>
   );
 };
 
@@ -90,11 +93,16 @@ const PerformanceStatsBar = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-4 border-t border-indigo-500 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-12 pt-4 border-t border-indigo-500 text-center"
+        >
           <p className="text-sm text-indigo-200">
             Based on internal benchmarks. Accuracy may vary by accent and background noise.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
