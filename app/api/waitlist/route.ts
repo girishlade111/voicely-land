@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      const resend = getResend();
+      const resend = await getResend();
       await resend.emails.send({
         from: "Voicely Team <hello@voicely.app>",
         to: normalizedEmail,
