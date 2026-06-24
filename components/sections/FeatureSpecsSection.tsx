@@ -2,17 +2,134 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Mic, ArrowDown, Plus } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-const commands = [
-  { phrase: "new paragraph", action: "Insert paragraph break" },
-  { phrase: "undo that", action: "Delete last sentence" },
-  { phrase: "add my email", action: "Insert: hello@voicely.app" },
-  { phrase: "sign off", action: "Insert email signature" },
-];
+const CommandsSvg = () => (
+  <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+    <rect x="0" y="0" width="340" height="280" rx="16" fill="white" />
+    <rect x="0" y="0" width="340" height="280" rx="16" stroke="#E4E4E7" strokeWidth="1" />
+    <rect x="16" y="14" width="8" height="8" rx="4" fill="#F87171" />
+    <rect x="30" y="14" width="8" height="8" rx="4" fill="#FBBF24" />
+    <rect x="44" y="14" width="8" height="8" rx="4" fill="#34D399" />
+    <text x="68" y="21" fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A" fontWeight="600">Voice Commands</text>
+    <line x1="0" y1="34" x2="340" y2="34" stroke="#E4E4E7" strokeWidth="1" />
+    {[
+      { icon: "new paragraph", label: "Insert\nparagraph break" },
+      { icon: "undo that", label: "Delete last\nsentence" },
+      { icon: "add email", label: "Insert\nhello@voicely.app" },
+      { icon: "sign off", label: "Insert email\nsignature" },
+    ].map((cmd, i) => (
+      <g key={i}>
+        <rect x="16" y={48 + i * 48} width="24" height="24" rx="8" fill="#EEF2FF" />
+        <path d={["M22 56C24 54 28 58 28 62C28 66 24 62 22 62L16 62", "M22 56C24 54 28 58 28 62C28 66 24 62 22 62L16 62", "M22 56C24 54 28 58 28 62C28 66 24 62 22 62L16 62", "M22 56C24 54 28 58 28 62C28 66 24 62 22 62L16 62"][i]} stroke="#4F46E5" strokeWidth="1.5" fill="none" />
+        <text x="50" y={63 + i * 48} fontFamily="system-ui,sans-serif" fontSize="12" fill="#18181B" fontWeight="600">&ldquo;{cmd.icon}&rdquo;</text>
+        <path d={`M${240} ${60 + i * 48} L${244} ${64 + i * 48} L${240} ${68 + i * 48}`} stroke="#D4D4D8" strokeWidth="1.5" fill="none" />
+        <text x="254" y={64 + i * 48} fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A">{cmd.label}</text>
+        {i < 3 && <line x1="16" y1={88 + i * 48} x2="324" y2={88 + i * 48} stroke="#F4F4F5" strokeWidth="1" />}
+      </g>
+    ))}
+    <rect x="16" y="244" width="308" height="24" rx="8" fill="#F4F4F5" />
+    <rect x="16" y="244" width="308" height="24" rx="8" stroke="#E4E4E7" strokeWidth="1" strokeDasharray="4 2" />
+    <text x="170" y="259" fontFamily="system-ui,sans-serif" fontSize="11" fill="#4F46E5" fontWeight="600" textAnchor="middle">+ Add Command</text>
+    <rect x="232" y="6" width="92" height="22" rx="11" fill="#4F46E5" />
+    <text x="278" y="21" fontFamily="system-ui,sans-serif" fontSize="10" fill="white" fontWeight="700" textAnchor="middle">Unlimited Commands</text>
+  </svg>
+);
 
-const punctuationBefore = "hey can you send me the report today also check if the meeting is confirmed\nI have a question about the budget";
+const ShortcutsSvg = () => (
+  <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+    <rect x="0" y="0" width="340" height="280" rx="16" fill="white" />
+    <rect x="0" y="0" width="340" height="280" rx="16" stroke="#E4E4E7" strokeWidth="1" />
+    <rect x="16" y="14" width="8" height="8" rx="4" fill="#F87171" />
+    <rect x="30" y="14" width="8" height="8" rx="4" fill="#FBBF24" />
+    <rect x="44" y="14" width="8" height="8" rx="4" fill="#34D399" />
+    <text x="68" y="21" fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A" fontWeight="600">Shortcut Settings</text>
+    <line x1="0" y1="34" x2="340" y2="34" stroke="#E4E4E7" strokeWidth="1" />
+    <rect x="16" y="48" width="308" height="128" rx="12" fill="#09090B" />
+    {[
+      { key: "⌘", plus: false },
+      { key: "+", plus: false },
+      { key: "⇧", plus: false },
+      { key: "+", plus: false },
+      { key: "Space", plus: false },
+    ].map((k, i) => (
+      <rect
+        key={i}
+        x={42 + i * 56}
+        y={72}
+        width={k.key === "Space" ? 52 : 38}
+        height={32}
+        rx="6"
+        fill="white"
+        fillOpacity="0.08"
+        stroke="white"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+      />
+    ))}
+    <text x="50" y="92" fontFamily="system-ui,sans-serif" fontSize="13" fill="white" fontWeight="600">⌘</text>
+    <text x="94" y="92" fontFamily="system-ui,sans-serif" fontSize="13" fill="#71717A">+</text>
+    <text x="150" y="92" fontFamily="system-ui,sans-serif" fontSize="13" fill="white" fontWeight="600">⇧</text>
+    <text x="204" y="92" fontFamily="system-ui,sans-serif" fontSize="13" fill="#71717A">+</text>
+    <text x="248" y="92" fontFamily="system-ui,sans-serif" fontSize="12" fill="white" fontWeight="600">Space</text>
+    <text x="170" y="144" fontFamily="system-ui,sans-serif" fontSize="11" fill="#A5B4FC" textAnchor="middle">Activate Voicely</text>
+    <rect x="16" y="190" width="308" height="24" rx="6" fill="#F4F4F5" />
+    <text x="28" y="206" fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A">Current mode:</text>
+    <text x="106" y="206" fontFamily="system-ui,sans-serif" fontSize="11" fill="#18181B" fontWeight="600">Hold to talk</text>
+    <rect x="278" y="193" width="36" height="18" rx="9" fill="#4F46E5" />
+    <rect x="300" y="196" width="12" height="12" rx="6" fill="white" />
+    <text x="170" y="248" fontFamily="system-ui,sans-serif" fontSize="10" fill="#A1A1AA" textAnchor="middle">Works in any app. No focus required.</text>
+    {/* Small key indicators */}
+    <rect x="140" y="228" width="52" height="18" rx="4" fill="#F4F4F5" stroke="#E4E4E7" strokeWidth="1" />
+    <text x="166" y="240" fontFamily="system-ui,sans-serif" fontSize="9" fill="#71717A" textAnchor="middle">Fn + F6</text>
+  </svg>
+);
+
+const PunctuationSvg = () => (
+  <svg viewBox="0 0 340 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+    <rect x="0" y="0" width="340" height="300" rx="16" fill="white" />
+    <rect x="0" y="0" width="340" height="300" rx="16" stroke="#E4E4E7" strokeWidth="1" />
+    <rect x="16" y="14" width="8" height="8" rx="4" fill="#F87171" />
+    <rect x="30" y="14" width="8" height="8" rx="4" fill="#FBBF24" />
+    <rect x="44" y="14" width="8" height="8" rx="4" fill="#34D399" />
+    <text x="68" y="21" fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A" fontWeight="600">Auto-Punctuation Preview</text>
+    <line x1="0" y1="34" x2="340" y2="34" stroke="#E4E4E7" strokeWidth="1" />
+    <text x="16" y="58" fontFamily="system-ui,sans-serif" fontSize="10" fill="#A1A1AA" fontWeight="600" letterSpacing="1.5">YOU SAID</text>
+    <text x="16" y="80" fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A" fontStyle="italic">
+      <tspan x="16" dy="0">hey can you send me the report today</tspan>
+      <tspan x="16" dy="16">also check if the meeting is confirmed</tspan>
+      <tspan x="16" dy="16">i have a question about the budget</tspan>
+    </text>
+    {/* Arrow */}
+    <rect x="152" y="116" width="36" height="22" rx="6" fill="#EEF2FF" />
+    <path d="M166 122L172 127L166 132" stroke="#4F46E5" strokeWidth="1.5" fill="none" />
+    <path d="M170 127L152 127" stroke="#4F46E5" strokeWidth="1.5" />
+    <text x="170" y="158" fontFamily="system-ui,sans-serif" fontSize="10" fill="#A1A1AA" fontWeight="600" textAnchor="middle" letterSpacing="1.5">VOICELY TYPED</text>
+    <text x="16" y="182" fontFamily="system-ui,sans-serif" fontSize="11" fill="#18181B">
+      <tspan x="16" dy="0">Hey</tspan>
+      <tspan dx="2" fill="#4F46E5" fontWeight="700">,</tspan>
+      <tspan> can you send me the report today</tspan>
+      <tspan dx="2" fill="#4F46E5" fontWeight="700">?</tspan>
+    </text>
+    <text x="16" y="200" fontFamily="system-ui,sans-serif" fontSize="11" fill="#18181B">
+      <tspan x="16" dy="0">Also</tspan>
+      <tspan dx="2" fill="#4F46E5" fontWeight="700">,</tspan>
+      <tspan> check if the meeting is</tspan>
+    </text>
+    <text x="16" y="218" fontFamily="system-ui,sans-serif" fontSize="11" fill="#18181B">
+      <tspan x="16" dy="0">confirmed</tspan>
+      <tspan dx="2" fill="#4F46E5" fontWeight="700">.</tspan>
+      <tspan> I have a question about the budget</tspan>
+      <tspan dx="2" fill="#4F46E5" fontWeight="700">.</tspan>
+    </text>
+    {/* Highlight legend */}
+    <rect x="16" y="260" width="8" height="8" rx="2" fill="#EEF2FF" />
+    <text x="30" y="268" fontFamily="system-ui,sans-serif" fontSize="10" fill="#71717A">Punctuation added by Voicely</text>
+    {/* Pause indicator */}
+    <rect x="16" y="278" width="8" height="8" rx="2" fill="#F4F4F5" stroke="#D4D4D8" strokeWidth="1" />
+    <text x="30" y="286" fontFamily="system-ui,sans-serif" fontSize="10" fill="#71717A">Auto-paragraph on long pause</text>
+  </svg>
+);
 
 const FeatureBlockOne = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -57,43 +174,9 @@ const FeatureBlockOne = () => {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
             className="relative"
           >
-            <div className="bg-white rounded-2xl shadow-lg border border-zinc-100 overflow-hidden">
-              <div className="flex items-center gap-1.5 px-4 pt-3.5 pb-2 border-b border-zinc-100">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                <span className="text-sm font-medium text-zinc-500 ml-2">
-                  My Voice Commands
-                </span>
-              </div>
-              <div className="p-4 space-y-3">
-                {commands.map((cmd, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center shrink-0">
-                      <Mic className="h-3.5 w-3.5 text-indigo-600" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-zinc-900">
-                        &ldquo;{cmd.phrase}&rdquo;
-                      </p>
-                    </div>
-                    <ArrowDown className="h-3.5 w-3.5 text-zinc-300 shrink-0 rotate-[-90deg]" />
-                    <p className="text-sm text-zinc-500 truncate">
-                      {cmd.action}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <div className="border-t border-zinc-100 px-4 py-2.5">
-                <button className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-600 hover:text-indigo-700 transition-colors">
-                  <Plus className="h-3.5 w-3.5" />
-                  Add Command
-                </button>
-              </div>
+            <div className="w-full max-w-md mx-auto drop-shadow-lg">
+              <CommandsSvg />
             </div>
-            <span className="absolute -top-2.5 -right-2.5 text-xs font-bold text-white bg-indigo-600 rounded-full px-3 py-1 shadow-sm">
-              Unlimited Commands
-            </span>
           </motion.div>
         </div>
       </div>
@@ -148,43 +231,8 @@ const FeatureBlockTwo = () => {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
             className="md:order-1"
           >
-            <div className="bg-white rounded-2xl shadow-lg border border-zinc-100 overflow-hidden">
-              <div className="flex items-center gap-1.5 px-4 pt-3.5 pb-2 border-b border-zinc-100">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                <span className="text-sm font-medium text-zinc-500 ml-2">
-                  Shortcut Settings
-                </span>
-              </div>
-              <div className="p-5 space-y-5">
-                <div className="bg-zinc-950 rounded-xl p-4 flex items-center justify-center gap-2.5 flex-wrap">
-                  <span className="inline-flex items-center justify-center min-w-[2rem] h-8 px-2.5 rounded-md bg-white/10 text-white text-sm font-semibold shadow-inner">
-                    ⌘
-                  </span>
-                  <span className="text-zinc-500 text-sm">+</span>
-                  <span className="inline-flex items-center justify-center min-w-[2rem] h-8 px-2.5 rounded-md bg-white/10 text-white text-sm font-semibold shadow-inner">
-                    ⇧
-                  </span>
-                  <span className="text-zinc-500 text-sm">+</span>
-                  <span className="inline-flex items-center justify-center min-w-[2rem] h-8 px-3 rounded-md bg-white/10 text-white text-sm font-semibold shadow-inner">
-                    Space
-                  </span>
-                  <div className="w-px h-6 bg-zinc-700 mx-1" />
-                  <span className="text-sm text-indigo-400 font-medium">
-                    Activate Voicely
-                  </span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-zinc-500">Current mode: Hold to talk</span>
-                  <div className="w-10 h-5 rounded-full bg-indigo-600 relative cursor-pointer shrink-0">
-                    <div className="w-4 h-4 rounded-full bg-white absolute top-0.5 right-0.5 shadow-sm" />
-                  </div>
-                </div>
-                <p className="text-xs text-zinc-400 text-center">
-                  Works in any app. No focus required.
-                </p>
-              </div>
+            <div className="w-full max-w-md mx-auto drop-shadow-lg">
+              <ShortcutsSvg />
             </div>
           </motion.div>
         </div>
@@ -196,23 +244,6 @@ const FeatureBlockTwo = () => {
 const FeatureBlockThree = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  const renderHighlighted = () => (
-    <>
-      <span>Hey</span>
-      <span className="bg-indigo-100 rounded-sm px-0.5">,</span>
-      <span> can you send me the report today</span>
-      <span className="bg-indigo-100 rounded-sm px-0.5">?</span>
-      <span> Also</span>
-      <span className="bg-indigo-100 rounded-sm px-0.5">,</span>
-      <span> check if the meeting is</span>
-      <br />
-      <span>confirmed</span>
-      <span className="bg-indigo-100 rounded-sm px-0.5">.</span>
-      <span> I have a question about the budget</span>
-      <span className="bg-indigo-100 rounded-sm px-0.5">.</span>
-    </>
-  );
 
   return (
     <div className="bg-white py-20">
@@ -252,36 +283,8 @@ const FeatureBlockThree = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
           >
-            <div className="bg-white rounded-2xl shadow-lg border border-zinc-100 overflow-hidden">
-              <div className="flex items-center gap-1.5 px-4 pt-3.5 pb-2 border-b border-zinc-100">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                <span className="text-sm font-medium text-zinc-500 ml-2">
-                  Auto-Punctuation Preview
-                </span>
-              </div>
-              <div className="p-4 space-y-4">
-                <div>
-                  <p className="text-xs font-semibold tracking-widest text-zinc-400 mb-2 uppercase">
-                    You said:
-                  </p>
-                  <p className="text-sm italic text-zinc-500 leading-relaxed">
-                    {punctuationBefore}
-                  </p>
-                </div>
-                <div className="flex justify-center">
-                  <ArrowDown className="h-5 w-5 text-indigo-600" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold tracking-widest text-zinc-400 mb-2 uppercase">
-                    Voicely typed:
-                  </p>
-                  <p className="text-sm text-zinc-900 leading-relaxed">
-                    {renderHighlighted()}
-                  </p>
-                </div>
-              </div>
+            <div className="w-full max-w-md mx-auto drop-shadow-lg">
+              <PunctuationSvg />
             </div>
           </motion.div>
         </div>

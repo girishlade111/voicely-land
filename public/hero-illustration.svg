@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="520" viewBox="0 0 600 520" fill="none">
+  <defs>
+    <linearGradient id="micGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="waveGrad1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="waveGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.25"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#C7D2FE"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#4F46E5" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background glow circles -->
+  <circle cx="300" cy="220" r="180" fill="#4F46E5" opacity="0.04"/>
+  <circle cx="300" cy="220" r="120" fill="#4F46E5" opacity="0.06"/>
+
+  <!-- Sound wave bars left -->
+  <g opacity="0.6">
+    <rect x="90" y="180" width="4" height="40" rx="2" fill="url(#waveGrad1)">
+      <animate attributeName="height" values="40;60;25;40" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="180;160;197;180" dur="1.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="100" y="170" width="4" height="60" rx="2" fill="url(#waveGrad1)">
+      <animate attributeName="height" values="60;35;50;60" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="170;192;175;170" dur="1.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="110" y="165" width="4" height="70" rx="2" fill="url(#waveGrad1)">
+      <animate attributeName="height" values="70;45;55;70" dur="1.3s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="165;187;172;165" dur="1.3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="120" y="175" width="4" height="50" rx="2" fill="url(#waveGrad2)">
+      <animate attributeName="height" values="50;70;40;50" dur="1.6s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="175;155;180;175" dur="1.6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Sound wave bars right -->
+  <g opacity="0.6">
+    <rect x="476" y="180" width="4" height="40" rx="2" fill="url(#waveGrad1)">
+      <animate attributeName="height" values="40;25;55;40" dur="1.4s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="180;197;162;180" dur="1.4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="486" y="170" width="4" height="60" rx="2" fill="url(#waveGrad1)">
+      <animate attributeName="height" values="60;40;70;60" dur="1.7s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="170;190;155;170" dur="1.7s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="496" y="165" width="4" height="70" rx="2" fill="url(#waveGrad1)">
+      <animate attributeName="height" values="70;50;40;70" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="165;175;180;165" dur="1.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="506" y="175" width="4" height="50" rx="2" fill="url(#waveGrad2)">
+      <animate attributeName="height" values="50;30;65;50" dur="1.9s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="175;185;157;175" dur="1.9s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Circular microphone background -->
+  <circle cx="300" cy="210" r="72" fill="#EEF2FF"/>
+  <circle cx="300" cy="210" r="72" stroke="#E0E7FF" stroke-width="1"/>
+
+  <!-- Microphone body -->
+  <g filter="url(#shadow)">
+    <rect x="278" y="160" width="44" height="66" rx="22" fill="url(#micGrad)"/>
+    <rect x="278" y="160" width="44" height="66" rx="22" fill="white" opacity="0.1"/>
+  </g>
+  <!-- Mic highlight -->
+  <rect x="284" y="168" width="8" height="12" rx="4" fill="white" opacity="0.2"/>
+  <!-- Mic bottom arc -->
+  <path d="M282 214 C282 232 318 232 318 214" stroke="url(#micGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Mic line -->
+  <line x1="300" y1="226" x2="300" y2="248" stroke="#4F46E5" stroke-width="3" stroke-linecap="round"/>
+  <!-- Mic base -->
+  <rect x="290" y="246" width="20" height="4" rx="2" fill="#4F46E5" opacity="0.6"/>
+
+  <!-- Small floating dots -->
+  <circle cx="230" cy="140" r="3" fill="#4F46E5" opacity="0.2">
+    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="370" cy="145" r="2.5" fill="#7C3AED" opacity="0.2">
+    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Float notification 1 - "new paragraph" -->
+  <g filter="url(#shadow)">
+    <rect x="195" y="272" width="118" height="36" rx="18" fill="white" stroke="#E0E7FF" stroke-width="1"/>
+    <text x="230" y="295" font-family="system-ui,sans-serif" font-size="12" fill="#4F46E5" font-weight="600" text-anchor="middle">new paragraph</text>
+  </g>
+
+  <!-- Float notification 2 - "sign off" -->
+  <g filter="url(#shadow)">
+    <rect x="365" y="302" width="85" height="36" rx="18" fill="white" stroke="#E0E7FF" stroke-width="1"/>
+    <text x="385" y="325" font-family="system-ui,sans-serif" font-size="12" fill="#7C3AED" font-weight="600" text-anchor="middle">sign off</text>
+  </g>
+
+  <!-- Curved arrow from mic to transcript -->
+  <path d="M300 254 C300 290 250 310 220 330" stroke="#4F46E5" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.4"/>
+
+  <!-- Transcript card -->
+  <g filter="url(#shadow)">
+    <rect x="150" y="340" width="300" height="130" rx="16" fill="white" stroke="#E0E7FF" stroke-width="1"/>
+    <!-- Card header dots -->
+    <circle cx="172" cy="362" r="4" fill="#F87171"/>
+    <circle cx="188" cy="362" r="4" fill="#FBBF24"/>
+    <circle cx="204" cy="362" r="4" fill="#34D399"/>
+    <!-- Card divider -->
+    <line x1="150" y1="376" x2="450" y2="376" stroke="#F1F5F9" stroke-width="1"/>
+    <!-- Transcript line 1 -->
+    <text x="170" y="402" font-family="system-ui,sans-serif" font-size="13" fill="#1E293B" font-weight="500">Hey</text>
+    <text x="198" y="402" font-family="system-ui,sans-serif" font-size="13" fill="#4F46E5" font-weight="700">,</text>
+    <text x="206" y="402" font-family="system-ui,sans-serif" font-size="13" fill="#1E293B"> can you send me the report today</text>
+    <text x="400" y="402" font-family="system-ui,sans-serif" font-size="13" fill="#4F46E5" font-weight="700">?</text>
+    <!-- Transcript line 2 -->
+    <text x="170" y="424" font-family="system-ui,sans-serif" font-size="13" fill="#1E293B">Also</text>
+    <text x="200" y="424" font-family="system-ui,sans-serif" font-size="13" fill="#4F46E5" font-weight="700">,</text>
+    <text x="208" y="424" font-family="system-ui,sans-serif" font-size="13" fill="#1E293B"> check if the meeting is confirmed</text>
+    <text x="388" y="424" font-family="system-ui,sans-serif" font-size="13" fill="#4F46E5" font-weight="700">.</text>
+    <!-- Cursor blink -->
+    <rect x="392" y="412" width="2" height="14" rx="1" fill="#4F46E5">
+      <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Sound wave circles -->
+  <circle cx="300" cy="210" r="90" fill="none" stroke="#4F46E5" stroke-width="1" opacity="0.08"/>
+  <circle cx="300" cy="210" r="110" fill="none" stroke="#4F46E5" stroke-width="1" opacity="0.05"/>
+</svg>

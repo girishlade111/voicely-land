@@ -1,8 +1,136 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
-  <rect width="1280" height="720" fill="#1e1b4b"/>
-  <circle cx="640" cy="300" r="80" fill="#4F46E5" opacity="0.2"/>
-  <circle cx="640" cy="300" r="55" fill="#4F46E5" opacity="0.4"/>
-  <path d="M620 290 L660 300 L620 310 Z" fill="white" opacity="0.9"/>
-  <text x="640" y="440" font-family="system-ui,sans-serif" font-size="32" fill="white" text-anchor="middle" font-weight="bold">Voicely Demo</text>
-  <text x="640" y="480" font-family="system-ui,sans-serif" font-size="18" fill="#a5b4fc" text-anchor="middle">Speak. Type. Done.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#2e1065"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="micGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C7D2FE"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="24" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="0" y2="720" stroke="white" stroke-width="1" transform="translate(160,0)"/>
+    <line x1="0" y1="0" x2="0" y2="720" stroke="white" stroke-width="1" transform="translate(320,0)"/>
+    <line x1="0" y1="0" x2="0" y2="720" stroke="white" stroke-width="1" transform="translate(480,0)"/>
+    <line x1="0" y1="0" x2="0" y2="720" stroke="white" stroke-width="1" transform="translate(640,0)"/>
+    <line x1="0" y1="0" x2="0" y2="720" stroke="white" stroke-width="1" transform="translate(800,0)"/>
+    <line x1="0" y1="0" x2="0" y2="720" stroke="white" stroke-width="1" transform="translate(960,0)"/>
+    <line x1="0" y1="0" x2="0" y2="720" stroke="white" stroke-width="1" transform="translate(1120,0)"/>
+    <line x1="0" y1="0" x2="720" y2="0" stroke="white" stroke-width="1" transform="translate(0,180)"/>
+    <line x1="0" y1="0" x2="720" y2="0" stroke="white" stroke-width="1" transform="translate(0,360)"/>
+    <line x1="0" y1="0" x2="720" y2="0" stroke="white" stroke-width="1" transform="translate(0,540)"/>
+    <line x1="0" y1="0" x2="720" y2="0" stroke="white" stroke-width="1" transform="translate(0,720)"/>
+  </g>
+
+  <!-- Glow circles -->
+  <circle cx="640" cy="280" r="140" fill="#4F46E5" opacity="0.08"/>
+  <circle cx="640" cy="280" r="100" fill="#7C3AED" opacity="0.08"/>
+  <circle cx="640" cy="280" r="60" fill="#4F46E5" opacity="0.12"/>
+
+  <!-- Wave bars left -->
+  <g opacity="0.5">
+    <rect x="520" y="248" width="4" height="36" rx="2" fill="#C7D2FE">
+      <animate attributeName="height" values="36;20;44;36" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="248;264;240;248" dur="1.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="532" y="240" width="4" height="52" rx="2" fill="#C7D2FE">
+      <animate attributeName="height" values="52;30;40;52" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="240;258;244;240" dur="1.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="544" y="235" width="4" height="62" rx="2" fill="#C7D2FE">
+      <animate attributeName="height" values="62;44;50;62" dur="1.3s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="235;250;243;235" dur="1.3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="556" y="242" width="4" height="48" rx="2" fill="#A5B4FC">
+      <animate attributeName="height" values="48;60;36;48" dur="1.6s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="242;230;248;242" dur="1.6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Wave bars right -->
+  <g opacity="0.5">
+    <rect x="716" y="248" width="4" height="36" rx="2" fill="#C7D2FE">
+      <animate attributeName="height" values="36;48;28;36" dur="1.4s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="248;236;250;248" dur="1.4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="728" y="240" width="4" height="52" rx="2" fill="#C7D2FE">
+      <animate attributeName="height" values="52;36;64;52" dur="1.7s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="240;252;232;240" dur="1.7s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="740" y="235" width="4" height="62" rx="2" fill="#C7D2FE">
+      <animate attributeName="height" values="62;48;36;62" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="235;242;250;235" dur="1.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="752" y="242" width="4" height="48" rx="2" fill="#A5B4FC">
+      <animate attributeName="height" values="48;36;56;48" dur="1.9s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="242;248;236;242" dur="1.9s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Floating microchip decoration -->
+  <circle cx="400" cy="520" r="4" fill="#4F46E5" opacity="0.15"/>
+  <circle cx="880" cy="530" r="3" fill="#7C3AED" opacity="0.12"/>
+  <circle cx="350" cy="180" r="2.5" fill="#A5B4FC" opacity="0.1">
+    <animate attributeName="opacity" values="0.1;0.25;0.1" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="930" cy="170" r="3.5" fill="#4F46E5" opacity="0.1">
+    <animate attributeName="opacity" values="0.1;0.2;0.1" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Subtle ring around microphone -->
+  <circle cx="640" cy="280" r="80" fill="none" stroke="url(#lineGrad)" stroke-width="1" opacity="0.15"/>
+
+  <!-- Microphone body -->
+  <g filter="url(#glow)">
+    <rect x="620" y="238" width="40" height="58" rx="19" fill="url(#micGrad)"/>
+    <rect x="620" y="238" width="40" height="58" rx="19" fill="white" opacity="0.1"/>
+  </g>
+  <!-- Mic highlight -->
+  <rect x="626" y="246" width="6" height="10" rx="3" fill="white" opacity="0.2"/>
+  <!-- Mic bottom arc -->
+  <path d="M624 286 C624 302 656 302 656 286" stroke="url(#micGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Mic line -->
+  <line x1="640" y1="296" x2="640" y2="314" stroke="#C7D2FE" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Mic base -->
+  <rect x="630" y="312" width="20" height="3" rx="1.5" fill="#A5B4FC" opacity="0.5"/>
+
+  <!-- Title -->
+  <text x="640" y="420" font-family="system-ui,sans-serif" font-size="36" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="-0.5">Voicely Demo</text>
+
+  <!-- Tagline -->
+  <text x="640" y="462" font-family="system-ui,sans-serif" font-size="18" fill="#A5B4FC" text-anchor="middle" opacity="0.9">Speak. It Types. Anywhere.</text>
+
+  <!-- Language pills -->
+  <rect x="545" y="490" width="54" height="26" rx="13" fill="white" fill-opacity="0.06"/>
+  <text x="550" y="508" font-family="system-ui,sans-serif" font-size="11" fill="#C7D2FE" fill-opacity="0.8">Hindi</text>
+
+  <rect x="605" y="490" width="64" height="26" rx="13" fill="white" fill-opacity="0.06"/>
+  <text x="611" y="508" font-family="system-ui,sans-serif" font-size="11" fill="#C7D2FE" fill-opacity="0.8">Marathi</text>
+
+  <rect x="675" y="490" width="60" height="26" rx="13" fill="white" fill-opacity="0.06"/>
+  <text x="681" y="508" font-family="system-ui,sans-serif" font-size="11" fill="#C7D2FE" fill-opacity="0.8">English</text>
+
+  <!-- Play icon suggest button -->
+  <g transform="translate(640, 280)">
+    <rect x="-44" y="-44" width="88" height="88" rx="44" fill="white" fill-opacity="0.15"/>
+    <rect x="-28" y="-28" width="56" height="56" rx="28" fill="white" fill-opacity="0.25" filter="url(#shadow)"/>
+    <polygon points="-8,-12 -8,12 16,0" fill="#4F46E5"/>
+  </g>
 </svg>
