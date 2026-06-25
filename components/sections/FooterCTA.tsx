@@ -91,7 +91,7 @@ export function FooterCTA() {
                   variant="default"
                   size="lg"
                   disabled={status === "loading"}
-                  className="bg-white text-accent hover:bg-zinc-100"
+                  className="bg-white text-accent hover:bg-zinc-100 dark:bg-white/10 dark:text-white/90 dark:hover:bg-white/20"
                 >
                   {status === "loading" ? (
                     <span className="flex items-center gap-2">

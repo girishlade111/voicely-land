@@ -8,12 +8,12 @@ import { cn } from "@/lib/utils";
 const Accordion = AccordionPrimitive.Root;
 
 const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("border-b border-zinc-200", className)}
+    className={cn("border-b border-white/10", className)}
     {...props}
   />
 ));
@@ -25,15 +25,15 @@ const AccordionTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
-      ref={ref}
-      className={cn(
-        "flex flex-1 items-center justify-between py-5 text-left text-base font-medium text-white/90 transition-all hover:text-accent [&[data-state=open]>svg]:rotate-180",
-        className
-      )}
+  ref={ref}
+  className={cn(
+    "overflow-hidden text-sm text-white/60 transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+    className
+  )}
       {...props}
     >
       {children}
-      <ChevronDown className="h-4 w-4 shrink-0 text-zinc-400 transition-transform duration-200" />
+      <ChevronDown className="h-4 w-4 shrink-0 text-white/40 transition-transform duration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
