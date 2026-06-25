@@ -74,7 +74,7 @@ export function PricingPreview() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.3, delay: 0.2 + i * 0.06 }}
-                  className="flex items-start gap-3 text-sm text-zinc-600"
+                  className="flex items-start gap-3 text-sm text-white/70"
                 >
                   <Check className="h-4 w-4 text-accent mt-0.5 shrink-0" />
                   <span>{f}</span>

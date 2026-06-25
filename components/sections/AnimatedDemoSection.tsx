@@ -160,7 +160,7 @@ export default function AnimatedDemoSection() {
                   </div>
 
                   <div className="min-h-[5rem] sm:min-h-[6rem]">
-                    <p className="text-sm sm:text-sm text-zinc-800 leading-relaxed">
+                    <p className="text-sm sm:text-sm text-white/80 leading-relaxed">
                       {typedWords.map((word, i) => (
                         <motion.span
                           key={`${word}-${i}`}
@@ -173,10 +173,10 @@ export default function AnimatedDemoSection() {
                         </motion.span>
                       ))}
                       {phase >= 1 && typedWords.length < totalWords && (
-                        <span className="inline-block w-[2px] h-[1.1em] bg-zinc-800 align-middle" />
+                        <span className="inline-block w-[2px] h-[1.1em] bg-white/80 align-middle" />
                       )}
                       {phase === 0 && (
-                        <span className="inline-block w-[2px] h-[1.1em] bg-zinc-400 align-middle animate-pulse" />
+                        <span className="inline-block w-[2px] h-[1.1em] bg-white/40 align-middle animate-pulse" />
                       )}
                     </p>
                   </div>
