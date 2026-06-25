@@ -111,5 +111,6 @@ const SpeedComparisonSection = () => {
       </div>
     </section>
   );
+};
 
 export default SpeedComparisonSection;
