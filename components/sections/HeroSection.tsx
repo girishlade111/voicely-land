@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import HeroMicVisual from "@/components/ui/HeroMicVisual";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -118,37 +119,9 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="relative"
+            className="relative flex items-center justify-center w-full h-full py-8 md:py-0"
           >
-            <div className="relative rounded-2xl bg-gradient-to-br from-indigo-50 to-purple-50 p-8 sm:p-12 flex items-center justify-center min-h-[300px] sm:min-h-[400px] overflow-hidden">
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="relative"
-              >
-                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="44" y="20" width="32" height="48" rx="16" fill="#4F46E5" fillOpacity="0.15" stroke="#4F46E5" strokeWidth="2"/>
-                  <path d="M36 52C36 65.3 46.7 76 60 76C73.3 76 84 65.3 84 52" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M60 76V88" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M48 88H72" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="100" cy="30" r="12" fill="#22C55E" fillOpacity="0.15" stroke="#22C55E" strokeWidth="1.5"/>
-                  <path d="M96 30L99 33L104 27" stroke="#22C55E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M40 56 Q60 64 80 56" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.4"/>
-                  <path d="M36 64 Q60 74 84 64" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.25"/>
-                </svg>
-              </motion.div>
-
-              <div className="absolute bottom-4 left-4 right-4 flex justify-center">
-                <div className="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm flex items-center gap-2 text-sm font-medium text-zinc-700">
-                  <span>🇮🇳</span>
-                  <span>Hindi</span>
-                  <span className="text-zinc-300">·</span>
-                  <span>Marathi</span>
-                  <span className="text-zinc-300">·</span>
-                  <span>English</span>
-                </div>
-              </div>
-            </div>
+            <HeroMicVisual />
           </motion.div>
         </div>
       </div>
