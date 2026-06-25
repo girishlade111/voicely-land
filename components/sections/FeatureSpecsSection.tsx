@@ -116,7 +116,7 @@ const FeatureBlockTwo = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <div className="bg-zinc-50 py-20">
+    <div className="py-20">
       <div ref={ref} className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <motion.div
@@ -135,10 +135,10 @@ const FeatureBlockTwo = () => {
               <p className="text-xs font-semibold tracking-widest text-indigo-600 mb-3 relative z-10">
                 SHORTCUTS
               </p>
-              <h3 className="text-2xl font-bold text-zinc-900 mb-4 relative z-10">
+              <h3 className="text-2xl font-bold text-white/90 mb-4 relative z-10">
                 One key. Instant dictation.
               </h3>
-              <p className="text-zinc-500 text-sm leading-relaxed mb-6 max-w-md md:ml-auto">
+              <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-md md:ml-auto">
                 Assign any keyboard shortcut to activate Voicely.
                 Hold your shortcut, speak, release &mdash; your words appear instantly
                 in the active app. No switching windows. No clicking. Just speak.
@@ -173,7 +173,7 @@ const FeatureBlockThree = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <div className="bg-white py-20">
+    <div className="py-20">
       <div ref={ref} className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <motion.div
@@ -188,10 +188,10 @@ const FeatureBlockThree = () => {
               <p className="text-xs font-semibold tracking-widest text-indigo-600 mb-3 relative z-10">
                 AUTO-PUNCTUATION
               </p>
-              <h3 className="text-2xl font-bold text-zinc-900 mb-4 relative z-10">
+              <h3 className="text-2xl font-bold text-white/90 mb-4 relative z-10">
                 Speak naturally. Read perfectly.
               </h3>
-              <p className="text-zinc-500 text-sm leading-relaxed mb-6 max-w-md">
+              <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-md">
                 Voicely automatically adds commas, periods, question marks,
                 and paragraph breaks based on your speech patterns and pauses &mdash;
                 no manual editing needed. Works in English, Hindi, and Marathi.
@@ -233,13 +233,13 @@ const FeatureSpecsSection = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-xs font-semibold tracking-widest text-zinc-400 mb-4">
+            <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
               BUILT FOR POWER USERS
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white/90 mb-4">
               Made for the way you work
             </h2>
-            <p className="text-zinc-500 text-sm max-w-lg mx-auto">
+            <p className="text-white/60 text-sm max-w-lg mx-auto">
               Three features that separate Voicely from every other dictation tool.
             </p>
           </motion.div>

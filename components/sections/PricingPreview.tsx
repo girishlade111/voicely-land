@@ -57,14 +57,14 @@ export function PricingPreview() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
             whileHover={{ y: -4, boxShadow: "0 16px 48px rgba(0,0,0,0.08)" }}
-            className="bg-white border border-zinc-200 rounded-2xl p-8 shadow-sm"
+            className="glass rounded-2xl p-8"
           >
-            <h3 className="text-lg font-semibold text-zinc-900 mb-1">Starter</h3>
+            <h3 className="text-lg font-semibold text-white/90 mb-1">Starter</h3>
             <div className="flex items-baseline gap-1 mb-4">
-              <span className="text-4xl font-bold text-zinc-900">₹0</span>
-              <span className="text-zinc-400 text-sm">/forever</span>
+              <span className="text-4xl font-bold text-white/90">₹0</span>
+              <span className="text-white/40 text-sm">/forever</span>
             </div>
-            <p className="text-sm text-zinc-500 mb-6">
+            <p className="text-sm text-white/60 mb-6">
               Everything you need to get started
             </p>
             <ul className="space-y-3 mb-8">
@@ -83,7 +83,7 @@ export function PricingPreview() {
             </ul>
             <motion.div whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 400, damping: 15 }}>
               <Button
-                variant="outline"
+                variant="glass"
                 className="w-full"
                 onClick={scrollToHero}
               >
@@ -97,7 +97,7 @@ export function PricingPreview() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
             whileHover={{ y: -4, boxShadow: "0 20px 56px rgba(79,70,229,0.15)" }}
-            className="bg-white border-2 border-accent rounded-2xl p-8 shadow-xl relative"
+            className="glass-strong border-2 border-accent rounded-2xl p-8 relative"
           >
             <motion.div
               className="absolute -top-3 right-6"
@@ -109,21 +109,21 @@ export function PricingPreview() {
                 Most Popular
               </Badge>
             </motion.div>
-            <h3 className="text-lg font-semibold text-zinc-900 mb-1">Pro</h3>
+            <h3 className="text-lg font-semibold text-white/90 mb-1">Pro</h3>
             <div className="flex items-baseline gap-1 mb-4">
-              <span className="text-4xl font-bold text-zinc-900">Coming Soon</span>
+              <span className="text-4xl font-bold text-white/90">Coming Soon</span>
             </div>
-            <p className="text-sm text-zinc-500 mb-6">
+            <p className="text-sm text-white/60 mb-6">
               For power users who live by their voice
             </p>
-            <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8">
               {proFeatures.map((f, i) => (
                 <motion.li
                   key={f}
                   initial={{ opacity: 0, x: -10 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.3, delay: 0.25 + i * 0.06 }}
-                  className="flex items-start gap-3 text-sm text-zinc-600"
+                  className="flex items-start gap-3 text-sm text-white/70"
                 >
                   <Check className="h-4 w-4 text-accent mt-0.5 shrink-0" />
                   <span>{f}</span>
@@ -136,7 +136,7 @@ export function PricingPreview() {
               </Button>
             </motion.div>
             <motion.p
-              className="text-xs text-zinc-400 text-center mt-4"
+              className="text-xs text-white/40 text-center mt-4"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.6 }}

@@ -8,7 +8,7 @@ export function DemoVideo() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section className="py-16 sm:py-24 bg-zinc-50/50">
+    <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -17,10 +17,10 @@ export function DemoVideo() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-xs font-semibold tracking-widest text-zinc-400 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
             SEE IT IN ACTION
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white/90 mb-4">
             See Voicely in Action
           </h2>
         </motion.div>
@@ -47,7 +47,7 @@ export function DemoVideo() {
           </video>
         </motion.div>
 
-        <p className="text-center text-zinc-500 mt-6 text-sm">
+        <p className="text-center text-white/60 mt-6 text-sm">
           Speak in Hindi, Marathi, or English &mdash; Voicely types it, instantly.
         </p>
       </div>

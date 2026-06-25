@@ -98,16 +98,16 @@ export default function AnimatedDemoSection() {
   const totalWords = DEMO_WORDS.length;
 
   return (
-    <section className="py-16 sm:py-24 bg-zinc-50/50" id="demo">
+    <section className="py-16 sm:py-24" id="demo">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <p className="text-xs font-semibold tracking-widest text-zinc-400 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
             SEE IT IN ACTION
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white/90 mb-4">
             See Voicely in Action
           </h2>
-          <p className="text-muted-foreground text-zinc-500 max-w-lg mx-auto">
+          <p className="text-white/60 max-w-lg mx-auto">
             Press a shortcut. Speak naturally. Watch it type.
           </p>
         </div>
@@ -319,7 +319,7 @@ export default function AnimatedDemoSection() {
           </div>
         </div>
 
-        <p className="text-center text-zinc-500 mt-6 text-sm">
+        <p className="text-center text-white/60 mt-6 text-sm">
           Speak in English, Hindi, or Marathi &mdash; Voicely types it instantly.
         </p>
       </div>

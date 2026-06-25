@@ -122,7 +122,7 @@ export default function VoiceCommandsSection() {
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
           >
             <motion.div
-              className="bg-white border border-zinc-100 rounded-2xl p-5 shadow-sm"
+              className="glass rounded-2xl p-5"
               whileHover={{ boxShadow: "0 8px 40px rgba(0,0,0,0.06)" }}
               transition={{ duration: 0.3 }}
             >
@@ -130,7 +130,7 @@ export default function VoiceCommandsSection() {
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
                 <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                <span className="text-[10px] font-semibold tracking-widest text-zinc-400 ml-2 uppercase">
+                <span className="text-[10px] font-semibold tracking-widest text-white/40 ml-2 uppercase">
                   Command Log
                 </span>
                 <motion.div
@@ -139,7 +139,7 @@ export default function VoiceCommandsSection() {
                   transition={{ duration: 2, repeat: Infinity }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                  <span className="text-[10px] text-green-600 font-medium">
+                  <span className="text-[10px] text-emerald-400 font-medium">
                     Listening
                   </span>
                 </motion.div>
@@ -162,18 +162,18 @@ export default function VoiceCommandsSection() {
               </motion.div>
 
               <motion.div
-                className="mt-3 pt-3 border-t border-zinc-100"
+                className="mt-3 pt-3 border-t border-white/10"
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 1.2, duration: 0.5 }}
               >
                 <div className="flex items-center justify-between px-1">
-                  <span className="text-xs text-zinc-400">
+                  <span className="text-xs text-white/40">
                     + Add your own custom command
                   </span>
                   <div className="flex items-center gap-1.5 text-indigo-600 text-xs font-semibold">
                     <span>50+ built-in</span>
-                    <span className="text-zinc-300">·</span>
+                    <span className="text-white/30">·</span>
                     <span>Unlimited custom</span>
                   </div>
                 </div>
@@ -196,10 +196,10 @@ export default function VoiceCommandsSection() {
                 <p className="text-xs font-semibold tracking-widest text-indigo-600 mb-3">
                   HOW IT WORKS
                 </p>
-                <h3 className="text-2xl font-bold text-zinc-900 mb-4">
+                <h3 className="text-2xl font-bold text-white/90 mb-4">
                   Your voice is the remote control.
                 </h3>
-                <p className="text-zinc-500 text-sm leading-relaxed mb-6">
+                <p className="text-white/60 text-sm leading-relaxed mb-6">
                   Dictation is just the start. Say things like
                   &ldquo;select that&rdquo;, &ldquo;bold this&rdquo;, or
                   &ldquo;open Chrome&rdquo; &mdash; Voicely turns every spoken
@@ -221,14 +221,14 @@ export default function VoiceCommandsSection() {
                 ].map((stat) => (
                   <motion.div
                     key={stat.label}
-                    className="bg-white border border-zinc-100 rounded-xl p-4 shadow-sm"
-                    whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
+                    className="glass rounded-xl p-4"
+                    whileHover={{ y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <p className="text-sm font-semibold text-zinc-900 mb-0.5">
+                    <p className="text-sm font-semibold text-white/90 mb-0.5">
                       {stat.label}
                     </p>
-                    <p className="text-[11px] text-zinc-500">{stat.desc}</p>
+                    <p className="text-[11px] text-white/60">{stat.desc}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -246,7 +246,7 @@ export default function VoiceCommandsSection() {
                     initial={{ opacity: 0, scale: 0.85 }}
                     animate={badgesInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.25, delay: i * 0.05 }}
-                    className="inline-block px-3 py-1.5 rounded-full text-xs font-medium bg-white border border-zinc-200 text-zinc-600 shadow-sm"
+                    className="inline-block px-3 py-1.5 rounded-full text-xs font-medium glass text-white/70"
                     whileHover={{
                       scale: 1.05,
                       borderColor: "#818CF8",
