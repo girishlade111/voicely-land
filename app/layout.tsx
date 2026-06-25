@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -59,8 +60,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en" className={inter.variable}>
+      <body className="font-sans antialiased">
+        <Script id="strip-ext-attributes" strategy="beforeInteractive">{`new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="attributes"&&m.attributeName==="fdprocessedid"){m.target.removeAttribute("fdprocessedid")}};if(document.querySelector("[fdprocessedid]")){document.querySelectorAll("[fdprocessedid]").forEach(function(e){e.removeAttribute("fdprocessedid")})}}).observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:["fdprocessedid"]});document.querySelectorAll("[fdprocessedid]").forEach(function(e){e.removeAttribute("fdprocessedid")})`}</Script>
+        {children}
+      </body>
     </html>
   );
 }
