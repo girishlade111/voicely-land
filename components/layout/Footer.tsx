@@ -51,7 +51,7 @@ export function Footer() {
                 <>
                   <h4 className="text-sm font-semibold text-zinc-900 mb-4">Company</h4>
                   <ul className="space-y-3">
-                    <li><span className="text-sm text-zinc-300 cursor-not-allowed">About</span></li>
+                    <li><Link href="/about" className="text-sm text-zinc-500 hover:text-zinc-900">About</Link></li>
                     <li><span className="text-sm text-zinc-300 cursor-not-allowed">Blog</span></li>
                     <li><a href="mailto:hello@voicely.app" className="text-sm text-zinc-500 hover:text-zinc-900">Contact</a></li>
                   </ul>
