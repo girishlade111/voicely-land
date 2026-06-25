@@ -38,50 +38,62 @@ const CommandsSvg = () => (
 
 const ShortcutsSvg = () => (
   <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <rect x="0" y="0" width="340" height="280" rx="16" fill="white" />
-    <rect x="0" y="0" width="340" height="280" rx="16" stroke="#E4E4E7" strokeWidth="1" />
-    <rect x="16" y="14" width="8" height="8" rx="4" fill="#F87171" />
-    <rect x="30" y="14" width="8" height="8" rx="4" fill="#FBBF24" />
-    <rect x="44" y="14" width="8" height="8" rx="4" fill="#34D399" />
-    <text x="68" y="21" fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A" fontWeight="600">Shortcut Settings</text>
-    <line x1="0" y1="34" x2="340" y2="34" stroke="#E4E4E7" strokeWidth="1" />
-    <rect x="16" y="48" width="308" height="128" rx="12" fill="#09090B" />
+    <defs>
+      <linearGradient id="kbdGlow" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#18181B"/>
+        <stop offset="100%" stopColor="#27272A"/>
+      </linearGradient>
+      <linearGradient id="keyGlow" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="white" stopOpacity="0.12"/>
+        <stop offset="100%" stopColor="white" stopOpacity="0.06"/>
+      </linearGradient>
+      <filter id="kbdShadow">
+        <feDropShadow dx="0" dy="1" stdDeviation="1" floodColor="#000" floodOpacity="0.3"/>
+      </filter>
+    </defs>
+    <rect x="0" y="0" width="340" height="280" rx="18" fill="white" />
+    <rect x="0" y="0" width="340" height="280" rx="18" stroke="#E4E4E7" strokeWidth="1" />
+    {/* Window controls */}
+    <rect x="16" y="16" width="8" height="8" rx="4" fill="#F87171" />
+    <rect x="30" y="16" width="8" height="8" rx="4" fill="#FBBF24" />
+    <rect x="44" y="16" width="8" height="8" rx="4" fill="#34D399" />
+    <text x="140" y="23" fontFamily="system-ui,sans-serif" fontSize="11" fill="#A1A1AA" fontWeight="500" textAnchor="middle">Shortcut Settings</text>
+    {/* Keyboard card */}
+    <rect x="16" y="40" width="308" height="150" rx="14" fill="url(#kbdGlow)" filter="url(#kbdShadow)"/>
+    {/* Keyboard outline */}
+    <rect x="28" y="56" width="284" height="94" rx="8" fill="none" stroke="white" strokeOpacity="0.06" strokeWidth="1"/>
+    {/* Key row — combo display */}
+    <rect x="12" y="12" width="0" height="0" />
     {[
-      { key: "⌘", plus: false },
-      { key: "+", plus: false },
-      { key: "⇧", plus: false },
-      { key: "+", plus: false },
-      { key: "Space", plus: false },
+      { key: "⌘", label: "Command", x: 38, w: 42 },
+      { key: "⇧", label: "Shift", x: 96, w: 42 },
+      { key: "H", label: "Hotkey", x: 154, w: 42 },
     ].map((k, i) => (
-      <rect
-        key={i}
-        x={42 + i * 56}
-        y={72}
-        width={k.key === "Space" ? 52 : 38}
-        height={32}
-        rx="6"
-        fill="white"
-        fillOpacity="0.08"
-        stroke="white"
-        strokeOpacity="0.12"
-        strokeWidth="1"
-      />
+      <g key={i}>
+        <rect x={k.x} y={68} width={k.w} height={34} rx="7" fill="url(#keyGlow)" stroke="white" strokeOpacity="0.1" strokeWidth="1"/>
+        <text x={k.x + k.w / 2} y="91" fontFamily="system-ui,sans-serif" fontSize="14" fill="white" fontWeight="700" textAnchor="middle">{k.key}</text>
+        <text x={k.x + k.w / 2} y="130" fontFamily="system-ui,sans-serif" fontSize="9" fill="#71717A" textAnchor="middle" fontWeight="500">{k.label}</text>
+      </g>
     ))}
-    <text x="50" y="92" fontFamily="system-ui,sans-serif" fontSize="13" fill="white" fontWeight="600">⌘</text>
-    <text x="94" y="92" fontFamily="system-ui,sans-serif" fontSize="13" fill="#71717A">+</text>
-    <text x="150" y="92" fontFamily="system-ui,sans-serif" fontSize="13" fill="white" fontWeight="600">⇧</text>
-    <text x="204" y="92" fontFamily="system-ui,sans-serif" fontSize="13" fill="#71717A">+</text>
-    <text x="248" y="92" fontFamily="system-ui,sans-serif" fontSize="12" fill="white" fontWeight="600">Space</text>
-    <text x="170" y="144" fontFamily="system-ui,sans-serif" fontSize="11" fill="#A5B4FC" textAnchor="middle">Activate Voicely</text>
-    <rect x="16" y="190" width="308" height="24" rx="6" fill="#F4F4F5" />
-    <text x="28" y="206" fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A">Current mode:</text>
-    <text x="106" y="206" fontFamily="system-ui,sans-serif" fontSize="11" fill="#18181B" fontWeight="600">Hold to talk</text>
-    <rect x="278" y="193" width="36" height="18" rx="9" fill="#4F46E5" />
-    <rect x="300" y="196" width="12" height="12" rx="6" fill="white" />
-    <text x="170" y="248" fontFamily="system-ui,sans-serif" fontSize="10" fill="#A1A1AA" textAnchor="middle">Works in any app. No focus required.</text>
-    {/* Small key indicators */}
-    <rect x="140" y="228" width="52" height="18" rx="4" fill="#F4F4F5" stroke="#E4E4E7" strokeWidth="1" />
-    <text x="166" y="240" fontFamily="system-ui,sans-serif" fontSize="9" fill="#71717A" textAnchor="middle">Fn + F6</text>
+    {/* Plus signs */}
+    <text x="88" y="91" fontFamily="system-ui,sans-serif" fontSize="13" fill="#52525B" fontWeight="600" textAnchor="middle">+</text>
+    <text x="146" y="91" fontFamily="system-ui,sans-serif" fontSize="13" fill="#52525B" fontWeight="600" textAnchor="middle">+</text>
+    {/* Separator */}
+    <line x1="101" y1="140" x2="133" y2="140" stroke="white" strokeOpacity="0.08" strokeWidth="1"/>
+    <text x="170" y="165" fontFamily="system-ui,sans-serif" fontSize="10" fill="#A5B4FC" textAnchor="middle" fontWeight="500">⇢ Activate Voicely</text>
+    {/* Profile badges */}
+    <rect x="16" y="200" width="148" height="28" rx="8" fill="#FAFAFA" stroke="#E4E4E7" strokeWidth="1"/>
+    <text x="24" y="218" fontFamily="system-ui,sans-serif" fontSize="10" fill="#71717A">Current mode:</text>
+    <text x="88" y="218" fontFamily="system-ui,sans-serif" fontSize="10" fill="#18181B" fontWeight="600">Hold to talk</text>
+    <rect x="172" y="200" width="64" height="28" rx="8" fill="#FAFAFA" stroke="#E4E4E7" strokeWidth="1"/>
+    <text x="204" y="218" fontFamily="system-ui,sans-serif" fontSize="9" fill="#71717A" textAnchor="middle" fontWeight="500">Toggle</text>
+    {/* Toggle switch */}
+    <rect x="272" y="203" width="34" height="22" rx="11" fill="#4F46E5"/>
+    <circle cx="289" cy="214" r="8" fill="white" filter="url(#kbdShadow)"/>
+    <text x="170" y="254" fontFamily="system-ui,sans-serif" fontSize="9" fill="#A1A1AA" textAnchor="middle">Works in any app · No focus required</text>
+    {/* Fn key hint */}
+    <rect x="139" y="260" width="62" height="16" rx="6" fill="white" stroke="#E4E4E7" strokeWidth="1"/>
+    <text x="170" y="272" fontFamily="system-ui,sans-serif" fontSize="8" fill="#71717A" textAnchor="middle" fontWeight="500">Alternative: Fn + F6</text>
   </svg>
 );
 
