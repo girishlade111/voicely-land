@@ -45,7 +45,7 @@ export function FAQSection() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section id="faq" className="py-16 sm:py-24">
+    <section id="faq" className="bg-canvas-parchment py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,10 +53,10 @@ export function FAQSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-ink-muted-80 mb-4">
             FAQ
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white/90">
+          <h2 className="text-3xl sm:text-4xl font-bold text-ink">
             Frequently Asked Questions
           </h2>
         </motion.div>

@@ -37,7 +37,7 @@ export function LanguageSupport() {
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.2 + i * 0.15, ease: "easeOut" }}
                 whileHover={{ scale: 1.08, transition: { type: "spring", stiffness: 400, damping: 12 } }}
-                className="glass rounded-full px-6 py-3 text-base font-medium text-white/90 flex items-center gap-2 cursor-default"
+                className="rounded-full px-6 py-3 text-base font-medium text-white/90 flex items-center gap-2 cursor-default"
               >
                 <motion.span
                   animate={isInView ? { rotate: [0, 10, 0] } : {}}

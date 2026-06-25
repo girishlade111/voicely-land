@@ -33,10 +33,10 @@ const SpeedComparisonSection = () => {
     <section className="py-16 sm:py-24">
       <div ref={ref} className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="relative">
-          <span className="text-6xl font-black text-indigo-100 absolute -top-10 -left-2 select-none pointer-events-none leading-none">
+          <span className="text-6xl font-black text-apple-blue/20 absolute -top-10 -left-2 select-none pointer-events-none leading-none">
             02
           </span>
-          <p className="text-xs font-semibold tracking-widest text-indigo-600 mb-3 relative z-10">
+          <p className="text-xs font-semibold tracking-widest text-apple-blue mb-3 relative z-10">
             SPEED
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-white/90 mb-4 relative z-10">
@@ -52,7 +52,7 @@ const SpeedComparisonSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="glass p-6 sm:p-8"
+            className="p-6 sm:p-8"
           >
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
@@ -76,10 +76,10 @@ const SpeedComparisonSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="glass-strong p-6 sm:p-8 relative overflow-hidden"
+            className="p-6 sm:p-8 relative overflow-hidden"
           >
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-apple-blue/10 flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
                   <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
@@ -88,20 +88,20 @@ const SpeedComparisonSection = () => {
                 </svg>
               </div>
               <div className="flex items-center gap-2">
-                <p className="text-sm font-semibold text-indigo-600">With Voicely</p>
-                <span className="text-[10px] font-bold text-white bg-indigo-600 rounded-full px-2 py-0.5">3×</span>
+                <p className="text-sm font-semibold text-apple-blue">With Voicely</p>
+                <span className="text-[10px] font-bold text-white bg-apple-blue rounded-full px-2 py-0.5">3×</span>
               </div>
             </div>
             <div className="flex items-baseline gap-2 mb-1">
-              <span className="text-5xl sm:text-6xl font-black text-indigo-600">{count}+</span>
-              <span className="text-sm text-indigo-400">wpm</span>
+              <span className="text-5xl sm:text-6xl font-black text-apple-blue">{count}+</span>
+              <span className="text-sm text-apple-blue">wpm</span>
             </div>
-            <div className="h-2 rounded-full bg-indigo-100 mb-4 overflow-hidden">
+            <div className="h-2 rounded-full bg-apple-blue/10 mb-4 overflow-hidden">
               <motion.div
                 initial={{ width: "0%" }}
                 animate={isInView ? { width: "100%" } : {}}
                 transition={{ duration: 1.2, ease: "easeOut" }}
-                className="h-full rounded-full bg-indigo-600"
+                className="h-full rounded-full bg-apple-blue"
               />
             </div>
             <p className="text-sm text-white/60">Speaking speed — no waiting, just flowing</p>

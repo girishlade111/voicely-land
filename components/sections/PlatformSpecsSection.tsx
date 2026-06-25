@@ -60,7 +60,7 @@ const PlatformSpecsSection = () => {
                       animate={isInView ? { rotate: [0, 360] } : {}}
                       transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
                     >
-                      <req.icon className="h-4 w-4 text-indigo-500 shrink-0" />
+                      <req.icon className="h-4 w-4 text-apple-blue shrink-0" />
                     </motion.div>
                     <span className="text-sm text-white/70">
                       {req.text}

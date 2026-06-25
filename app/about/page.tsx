@@ -41,7 +41,7 @@ export default function About() {
   return (
     <>
       <Navbar />
-      <main className="pt-24 pb-16">
+      <main className="pt-24 pb-16 bg-canvas-parchment">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <motion.div
             ref={heroRef}
@@ -54,40 +54,40 @@ export default function About() {
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 1, delay: 0.5 }}
               >
-                <Mic className="h-6 w-6 text-accent" />
+                <Mic className="h-6 w-6 text-apple-blue" />
               </motion.div>
-              <span className="text-sm font-semibold tracking-widest text-white/40">
+              <span className="text-sm font-semibold tracking-widest text-ink-muted-80">
                 ABOUT
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="text-3xl sm:text-4xl font-bold text-white/90 mb-8"
+              className="text-3xl sm:text-4xl font-bold text-ink mb-8"
             >
               We believe typing is a bottleneck. Your voice should move as fast as your thoughts.
             </motion.h1>
 
             <motion.div variants={fadeUp} className="max-w-none">
-              <h2 className="text-xl font-semibold text-white/90 mt-8 mb-4">The Problem</h2>
-              <p className="text-white/70 mb-4 leading-relaxed">
+              <h2 className="text-xl font-semibold text-ink mt-8 mb-4">The Problem</h2>
+              <p className="text-ink-muted-48 mb-4 leading-relaxed">
                 The average person types at 40 words per minute. The average person speaks at 150
                 words per minute. Thats a 3x gap — and every day, millions of people sit at
                 their desks trying to close it with nothing but a keyboard.
               </p>
-              <p className="text-white/70 mb-4 leading-relaxed">
+              <p className="text-ink-muted-48 mb-4 leading-relaxed">
                 Existing voice typing solutions are either tied to specific apps, require constant
                 internet connectivity, or fail with Indian accents — mishearing common names,
                 mixing up languages, or refusing to work offline.
               </p>
-              <p className="text-white/70 mb-4 leading-relaxed">
+              <p className="text-ink-muted-48 mb-4 leading-relaxed">
                 We built Voicely to fix this. No subscription. No data leaving your machine. And
                 it actually understands Hindi, Marathi, and English — switching between them
                 as you speak.
               </p>
 
-              <h2 className="text-xl font-semibold text-white/90 mt-8 mb-4">The Solution</h2>
-              <p className="text-white/70 mb-4 leading-relaxed">
+              <h2 className="text-xl font-semibold text-ink mt-8 mb-4">The Solution</h2>
+              <p className="text-ink-muted-48 mb-4 leading-relaxed">
                 Voicely is a desktop app for macOS that lets you speak and type anywhere. Press a
                 shortcut, start talking, and Voicely transcribes your speech into text —
                 directly into any application: Gmail, Notion, VS Code, Slack, WhatsApp, or your
@@ -100,10 +100,10 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="glass rounded-xl p-6 my-6 border border-white/10"
+            className="bg-white rounded-xl p-6 my-6 border border-black/5"
           >
-            <p className="text-sm font-semibold text-white/90 mb-2">How it works</p>
-            <ul className="space-y-2 text-sm text-white/70">
+            <p className="text-sm font-semibold text-ink mb-2">How it works</p>
+            <ul className="space-y-2 text-sm text-ink-muted-48">
               {[
                 { num: "01", text: "Download and install Voicely on your Mac" },
                 { num: "02", text: "Press the global shortcut (⌘⇧Space) in any app" },
@@ -117,7 +117,7 @@ export default function About() {
                   className="flex items-start gap-2"
                 >
                   <motion.span
-                    className="text-accent font-bold mt-0.5 shrink-0"
+                    className="text-apple-blue font-bold mt-0.5 shrink-0"
                     whileHover={{ scale: 1.2 }}
                   >
                     {item.num}
@@ -134,31 +134,31 @@ export default function About() {
             animate={heroInView ? "animate" : "initial"}
             className="max-w-none"
           >
-            <p className="text-white/70 mb-4 leading-relaxed">
+            <p className="text-ink-muted-48 mb-4 leading-relaxed">
               All processing happens on-device using a locally-running AI model. Your voice
               never touches the internet. No account, no cloud, no monthly bill.
             </p>
 
-            <h2 className="text-xl font-semibold text-white/90 mt-8 mb-4">Why On-Device?</h2>
-            <p className="text-white/70 mb-4 leading-relaxed">
+            <h2 className="text-xl font-semibold text-ink mt-8 mb-4">Why On-Device?</h2>
+            <p className="text-ink-muted-48 mb-4 leading-relaxed">
               Privacy is not a feature. It is a right. Every voice typing product on the market
               sends your audio to a cloud server, processes it, and typically stores it —
               creating a permanent record of everything you have ever dictated.
             </p>
-            <p className="text-white/70 mb-4 leading-relaxed">
+            <p className="text-ink-muted-48 mb-4 leading-relaxed">
               Voicely runs entirely on your Mac. Your audio data is processed and discarded in
               real-time. Nothing leaves your computer. No recordings. No transcripts. No cloud.
               This also means Voicely works offline — on a plane, in a remote area, or
               anywhere without internet.
             </p>
 
-            <h2 className="text-xl font-semibold text-white/90 mt-8 mb-4">Built for Indian Languages</h2>
-            <p className="text-white/70 mb-4 leading-relaxed">
+            <h2 className="text-xl font-semibold text-ink mt-8 mb-4">Built for Indian Languages</h2>
+            <p className="text-ink-muted-48 mb-4 leading-relaxed">
               Most voice typing tools are built with English speakers in mind. We are building
               Voicely for India — a country where millions of people speak and work in
               multiple languages, often switching mid-sentence.
             </p>
-            <p className="text-white/70 mb-4 leading-relaxed">
+            <p className="text-ink-muted-48 mb-4 leading-relaxed">
               Voicely supports Hindi, Marathi, and English right out of the box, with more
               Indian languages — Tamil, Telugu, Bengali, and others — on the
               roadmap. The models have been tuned specifically for Indian accents and
@@ -168,7 +168,7 @@ export default function About() {
 
           <div ref={valuesRef}>
             <motion.h2
-              className="text-xl font-semibold text-white/90 mt-8 mb-4"
+              className="text-xl font-semibold text-ink mt-8 mb-4"
               initial={{ opacity: 0, y: 10 }}
               animate={valuesInView ? { opacity: 1, y: 0 } : {}}
             >
@@ -185,10 +185,10 @@ export default function About() {
                   key={v.title}
                   variants={fadeUp}
                   whileHover={{ y: -3 }}
-                  className="glass rounded-xl p-5 border border-white/10 cursor-default"
+                  className="bg-white rounded-xl p-5 border border-black/5 cursor-default"
                 >
-                  <p className="font-semibold text-white/90 mb-1">{v.title}</p>
-                  <p className="text-sm text-white/70">{v.desc}</p>
+                  <p className="font-semibold text-ink mb-1">{v.title}</p>
+                  <p className="text-sm text-ink-muted-48">{v.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -196,14 +196,14 @@ export default function About() {
 
           <div ref={roadmapRef}>
             <motion.h2
-              className="text-xl font-semibold text-white/90 mt-8 mb-4"
+              className="text-xl font-semibold text-ink mt-8 mb-4"
               initial={{ opacity: 0, y: 10 }}
               animate={roadmapInView ? { opacity: 1, y: 0 } : {}}
             >
               Roadmap
             </motion.h2>
             <motion.ul
-              className="space-y-3 text-white/70 mb-4"
+              className="space-y-3 text-ink-muted-48 mb-4"
               initial="initial"
               animate={roadmapInView ? "animate" : "initial"}
               variants={stagger}
@@ -215,7 +215,7 @@ export default function About() {
                   className="flex items-start gap-3"
                 >
                   <motion.span
-                    className="text-accent font-bold shrink-0 mt-0.5"
+                    className="text-apple-blue font-bold shrink-0 mt-0.5"
                     whileHover={{ scale: 1.05 }}
                   >
                     {item.period}
@@ -233,20 +233,20 @@ export default function About() {
             transition={{ duration: 0.5 }}
             className="max-w-none"
           >
-            <h2 className="text-xl font-semibold text-white/90 mt-8 mb-4">The Team</h2>
-            <p className="text-white/70 mb-4 leading-relaxed">
+            <h2 className="text-xl font-semibold text-ink mt-8 mb-4">The Team</h2>
+            <p className="text-ink-muted-48 mb-4 leading-relaxed">
               We are a small, focused team based in India, building tools that make technology
               more accessible. We believe the next billion users will interact with computers
               through their voice, not a keyboard — and we are building the foundation
               for that future.
             </p>
 
-            <h2 className="text-xl font-semibold text-white/90 mt-8 mb-4">Contact</h2>
-            <p className="text-white/70 mb-4 leading-relaxed">
+            <h2 className="text-xl font-semibold text-ink mt-8 mb-4">Contact</h2>
+            <p className="text-ink-muted-48 mb-4 leading-relaxed">
               Have questions, feedback, or ideas? We would love to hear from you.
               <br />
               Email us at{" "}
-              <a href="mailto:hello@voicely.app" className="text-accent hover:underline">
+              <a href="mailto:hello@voicely.app" className="text-apple-blue hover:underline">
                 hello@voicely.app
               </a>
             </p>

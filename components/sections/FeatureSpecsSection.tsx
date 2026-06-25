@@ -126,28 +126,28 @@ const FeatureBlockTwo = () => {
             className="md:order-2"
           >
             <div className="relative md:text-right">
-              <span className="text-6xl font-black text-indigo-100 absolute -top-8 -right-2 select-none pointer-events-none leading-none md:block hidden">
+              <span className="text-6xl font-black text-apple-blue/70 absolute -top-8 -right-2 select-none pointer-events-none leading-none md:block hidden">
                 02
               </span>
-              <span className="text-6xl font-black text-indigo-100 absolute -top-8 -left-2 select-none pointer-events-none leading-none md:hidden">
+              <span className="text-6xl font-black text-apple-blue/70 absolute -top-8 -left-2 select-none pointer-events-none leading-none md:hidden">
                 02
               </span>
-              <p className="text-xs font-semibold tracking-widest text-indigo-600 mb-3 relative z-10">
+              <p className="text-xs font-semibold tracking-widest text-apple-blue mb-3 relative z-10">
                 SHORTCUTS
               </p>
-              <h3 className="text-2xl font-bold text-white/90 mb-4 relative z-10">
+              <h3 className="text-2xl font-bold text-ink mb-4 relative z-10">
                 One key. Instant dictation.
               </h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-md md:ml-auto">
+              <p className="text-ink-muted-48 text-sm leading-relaxed mb-6 max-w-md md:ml-auto">
                 Assign any keyboard shortcut to activate Voicely.
                 Hold your shortcut, speak, release &mdash; your words appear instantly
                 in the active app. No switching windows. No clicking. Just speak.
               </p>
               <div className="flex flex-wrap gap-2 md:justify-end">
-                <Badge variant="secondary">Global Hotkey</Badge>
-                <Badge variant="secondary">Hold-to-Talk</Badge>
-                <Badge variant="secondary">Toggle Mode</Badge>
-                <Badge variant="secondary">Per-App Shortcuts</Badge>
+                <Badge variant="muted">Global Hotkey</Badge>
+                <Badge variant="muted">Hold-to-Talk</Badge>
+                <Badge variant="muted">Toggle Mode</Badge>
+                <Badge variant="muted">Per-App Shortcuts</Badge>
               </div>
             </div>
           </motion.div>
@@ -182,25 +182,25 @@ const FeatureBlockThree = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="relative">
-              <span className="text-6xl font-black text-indigo-100 absolute -top-8 -left-2 select-none pointer-events-none leading-none">
+              <span className="text-6xl font-black text-apple-blue/70 absolute -top-8 -left-2 select-none pointer-events-none leading-none">
                 03
               </span>
-              <p className="text-xs font-semibold tracking-widest text-indigo-600 mb-3 relative z-10">
+              <p className="text-xs font-semibold tracking-widest text-apple-blue mb-3 relative z-10">
                 AUTO-PUNCTUATION
               </p>
-              <h3 className="text-2xl font-bold text-white/90 mb-4 relative z-10">
+              <h3 className="text-2xl font-bold text-ink mb-4 relative z-10">
                 Speak naturally. Read perfectly.
               </h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-md">
+              <p className="text-ink-muted-48 text-sm leading-relaxed mb-6 max-w-md">
                 Voicely automatically adds commas, periods, question marks,
                 and paragraph breaks based on your speech patterns and pauses &mdash;
                 no manual editing needed. Works in English, Hindi, and Marathi.
               </p>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary">Smart Commas</Badge>
-                <Badge variant="secondary">Pause Detection</Badge>
-                <Badge variant="secondary">Question Marks</Badge>
-                <Badge variant="secondary">Hindi Support</Badge>
+                <Badge variant="muted">Smart Commas</Badge>
+                <Badge variant="muted">Pause Detection</Badge>
+                <Badge variant="muted">Question Marks</Badge>
+                <Badge variant="muted">Hindi Support</Badge>
               </div>
             </div>
           </motion.div>
@@ -225,7 +225,7 @@ const FeatureSpecsSection = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section id="features-deep">
+    <section id="features-deep" className="bg-white">
       <div ref={ref}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-20 pb-4 text-center">
           <motion.div
@@ -233,13 +233,13 @@ const FeatureSpecsSection = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
+            <p className="text-xs font-semibold tracking-widest text-ink-muted-80 mb-4">
               BUILT FOR POWER USERS
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white/90 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-ink mb-4">
               Made for the way you work
             </h2>
-            <p className="text-white/60 text-sm max-w-lg mx-auto">
+            <p className="text-ink-muted-48 text-sm max-w-lg mx-auto">
               Three features that separate Voicely from every other dictation tool.
             </p>
           </motion.div>

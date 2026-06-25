@@ -27,7 +27,7 @@ export function HowItWorks() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="how-it-works" className="py-16 sm:py-24">
+    <section id="how-it-works" className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,10 +35,10 @@ export function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-ink-muted-80 mb-4">
             HOW IT WORKS
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white/90">
+          <h2 className="text-3xl sm:text-4xl font-bold text-ink">
             Up and Running in 2 Minutes
           </h2>
         </motion.div>
@@ -57,16 +57,16 @@ export function HowItWorks() {
                 className="flex flex-col items-center text-center flex-1 lg:flex-none cursor-default"
               >
                 <motion.div
-                  className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.12, backgroundColor: "rgba(79,70,229,0.2)" }}
+                  className="w-14 h-14 rounded-2xl bg-surface-tile-1 flex items-center justify-center mb-4"
+                  whileHover={{ scale: 1.12, backgroundColor: "rgba(0,122,255,0.2)" }}
                   transition={{ type: "spring", stiffness: 400, damping: 12 }}
                 >
-                  <span className="text-2xl font-bold text-accent">{step.number}</span>
+                  <span className="text-2xl font-bold text-apple-blue">{step.number}</span>
                 </motion.div>
-                <h3 className="text-lg font-semibold text-white/90 mb-2">
+                <h3 className="text-lg font-semibold text-ink mb-2">
                   {step.title}
                 </h3>
-                <p className="text-sm text-white/60 max-w-xs">
+                <p className="text-sm text-ink-muted-48 max-w-xs">
                   {step.description}
                 </p>
               </motion.div>
@@ -82,7 +82,7 @@ export function HowItWorks() {
                     animate={isInView ? { x: [0, 6, 0] } : {}}
                     transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 + i * 0.2 }}
                   >
-                    <ArrowRight className="h-6 w-6 text-indigo-400" />
+                    <ArrowRight className="h-6 w-6 text-apple-blue" />
                   </motion.div>
                 </motion.div>
               )}

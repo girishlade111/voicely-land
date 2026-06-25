@@ -42,7 +42,7 @@ export function FeaturesGrid() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section id="features" className="py-16 sm:py-24">
+    <section id="features" className="bg-canvas-parchment py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,10 +50,10 @@ export function FeaturesGrid() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-ink-muted-80 mb-4">
             FEATURES
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white/90">
+          <h2 className="text-3xl sm:text-4xl font-bold text-ink">
             Everything You Need, Nothing You Don&apos;t
           </h2>
         </motion.div>
@@ -69,19 +69,19 @@ export function FeaturesGrid() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(0,0,0,0.08)" }}
-              className="glass cursor-default"
+              className="bg-white shadow-sm rounded-2xl p-6 cursor-default"
             >
               <motion.div
-                className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"
-                whileHover={{ scale: 1.15, backgroundColor: "rgba(79,70,229,0.2)" }}
+                className="w-10 h-10 rounded-xl bg-apple-blue/10 flex items-center justify-center mb-4"
+                whileHover={{ scale: 1.15, backgroundColor: "rgba(0,122,255,0.2)" }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
               >
-                <feature.icon className="h-5 w-5 text-accent" />
+                <feature.icon className="h-5 w-5 text-apple-blue" />
               </motion.div>
-              <h3 className="text-lg font-semibold text-white/90 mb-2">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 {feature.title}
               </h3>
-              <p className="text-sm text-white/60 leading-relaxed">
+              <p className="text-sm text-ink-muted-48 leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

@@ -60,14 +60,14 @@ const StatBlock = ({ config, isInView, delay, hasDivider }: StatBlockProps) => {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: delay, ease: "easeOut" }}
       className={`flex flex-col items-center text-center py-4 ${
-        hasDivider ? "md:border-r md:border-indigo-500" : ""
+        hasDivider ? "md:border-r md:border-black/5" : ""
       }`}
     >
-      <div className="text-5xl font-black text-white mb-1">
+      <div className="text-5xl font-black text-ink mb-1">
         {config.prefix}{count}{config.suffix}
       </div>
-      <p className="text-sm text-indigo-200 mb-0.5">{config.label}</p>
-      <p className="text-xs text-indigo-300">{config.sublabel}</p>
+      <p className="text-sm text-apple-blue/70 mb-0.5">{config.label}</p>
+      <p className="text-xs text-apple-blue/80">{config.sublabel}</p>
     </motion.div>
   );
 };
@@ -77,7 +77,7 @@ const PerformanceStatsBar = () => {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section className="bg-indigo-600 py-16">
+    <section className="bg-canvas-parchment py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div ref={ref}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
@@ -97,9 +97,9 @@ const PerformanceStatsBar = () => {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 pt-4 border-t border-indigo-500 text-center"
+          className="mt-12 pt-4 border-t border-black/5 text-center"
         >
-          <p className="text-sm text-indigo-200">
+          <p className="text-sm text-apple-blue/70">
             Based on internal benchmarks. Accuracy may vary by accent and background noise.
           </p>
         </motion.div>

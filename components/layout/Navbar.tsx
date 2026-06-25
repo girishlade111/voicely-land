@@ -33,28 +33,31 @@ export function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 glass-nav"
+      className="fixed top-0 left-0 right-0 z-50 bg-black"
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-11 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <Mic className="h-6 w-6 text-accent" />
-          <span className="text-xl font-bold text-white/90">Voicely</span>
+          <Mic className="h-4 w-4 text-white/80" />
+          <span className="text-sm font-semibold text-white/90">Voicely</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => handleScroll(link.href)}
-              className="text-sm font-medium text-white/60 hover:text-white/90 transition-colors"
+              className="text-sm font-medium text-white/80 hover:text-white/90 transition-colors"
             >
               {link.label}
             </button>
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Button onClick={() => handleScroll("#hero")} size="default">
+        <div className="hidden md:flex items-center">
+          <Button
+            onClick={() => handleScroll("#hero")}
+            className="h-8 rounded-full bg-white text-black text-sm px-4 hover:bg-white/90"
+          >
             Join Waitlist
           </Button>
         </div>
@@ -62,15 +65,19 @@ export function Navbar() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5 text-white/60" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 rounded-full hover:bg-white/10"
+              >
+                <Menu className="h-4 w-4 text-white/80" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
               <SheetHeader>
                 <Link href="/" className="flex items-center gap-2 mb-6">
-                  <Mic className="h-5 w-5 text-accent" />
-                  <span className="text-lg font-bold text-white/90">Voicely</span>
+                  <Mic className="h-5 w-5 text-apple-blue" />
+                  <span className="text-lg font-bold text-ink">Voicely</span>
                 </Link>
               </SheetHeader>
               <div className="flex flex-col gap-4 mt-4">
@@ -78,7 +85,7 @@ export function Navbar() {
                   <SheetClose key={link.href} asChild>
                     <button
                       onClick={() => handleScroll(link.href)}
-                      className="text-left text-base font-medium text-white/60 hover:text-white/90 py-2"
+                      className="text-left text-base font-medium text-ink-muted-48 hover:text-ink py-2"
                     >
                       {link.label}
                     </button>
@@ -87,7 +94,7 @@ export function Navbar() {
                 <SheetClose asChild>
                   <Button
                     onClick={() => handleScroll("#hero")}
-                    className="mt-4"
+                    className="mt-4 rounded-full text-sm"
                   >
                     Join Waitlist
                   </Button>

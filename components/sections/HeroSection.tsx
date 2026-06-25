@@ -12,7 +12,7 @@ function CountUp({ to, label }: { to: number; label: string }) {
   const isInView = useInView(ref, { once: true });
   const display = isInView ? to : 0;
   return (
-    <span ref={ref} className="font-semibold text-accent">
+    <span ref={ref} className="font-semibold text-apple-blue">
       {display.toLocaleString()}+ {label}
     </span>
   );
@@ -56,13 +56,13 @@ export function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <Badge variant="default" className="mb-6 text-sm px-4 py-1.5">
+            <Badge variant="on-dark" className="mb-6 text-sm px-4 py-1.5">
               🎙️ Now in Early Access
             </Badge>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white/90 leading-tight tracking-tight mb-6">
               Speak. It Types. <br className="hidden sm:block" />
-              <span className="text-accent">Anywhere.</span>
+              <span className="text-apple-blue">Anywhere.</span>
             </h1>
             <p className="text-lg text-white/60 max-w-lg mb-8 leading-relaxed">
               Voicely turns your voice into text across every app on your

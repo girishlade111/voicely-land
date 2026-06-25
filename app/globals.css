@@ -1,17 +1,22 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #09090b;
-  --color-foreground: #fafafa;
-  --color-muted: #52525b;
-  --color-muted-foreground: #a1a1aa;
-  --color-accent: #4f46e5;
-  --color-accent-hover: #4338ca;
-  --color-border: #27272a;
-  --color-card: rgba(255, 255, 255, 0.07);
-  --color-card-foreground: #fafafa;
-  --color-ring: #4f46e5;
-  --radius: 1rem;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-apple-blue: #0066cc;
+  --color-apple-blue-focus: #0071e3;
+  --color-apple-blue-on-dark: #2997ff;
+  --color-canvas: #ffffff;
+  --color-canvas-parchment: #f5f5f7;
+  --color-surface-pearl: #fafafc;
+  --color-surface-tile-1: #272729;
+  --color-surface-tile-2: #2a2a2c;
+  --color-surface-tile-3: #252527;
+  --color-surface-black: #000000;
+  --color-ink: #1d1d1f;
+  --color-ink-muted-80: #333333;
+  --color-ink-muted-48: #7a7a7a;
+  --color-body-muted: #cccccc;
+  --color-hairline: #e0e0e0;
 }
 
 html {
@@ -19,9 +24,15 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #09090b 0%, #1e1b4b 50%, #09090b 100%);
-  background-attachment: fixed;
   min-height: 100vh;
+}
+
+@utility product-shadow {
+  box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
+}
+
+@utility apple-press {
+  @apply active:scale-[0.95] transition-transform duration-150 ease-[cubic-bezier(0.4,0,0.6,1)];
 }
 
 @keyframes accordion-down {
@@ -40,16 +51,4 @@ body {
 
 @utility animate-accordion-up {
   animation: accordion-up 0.2s ease-out;
-}
-
-@utility glass {
-  @apply backdrop-blur-lg bg-white/[0.07] border border-white/[0.08] shadow-xl shadow-black/5;
-}
-
-@utility glass-strong {
-  @apply backdrop-blur-xl bg-white/[0.12] border border-white/[0.12] shadow-xl shadow-black/10;
-}
-
-@utility glass-nav {
-  @apply backdrop-blur-xl bg-white/[0.05] border-b border-white/[0.06];
 }

@@ -16,19 +16,19 @@ const BARS = [
 const RINGS = [
   {
     className: "w-[64px] h-[64px] md:w-[80px] md:h-[80px]",
-    color: "rgba(99,102,241,0.55)",
+    color: "rgba(0,102,204,0.55)",
     delay: 0,
     scale: 1.75,
   },
   {
     className: "w-[88px] h-[88px] md:w-[112px] md:h-[112px]",
-    color: "rgba(139,92,246,0.35)",
+    color: "rgba(0,102,204,0.35)",
     delay: 0.55,
     scale: 1.6,
   },
   {
     className: "w-[112px] h-[112px] md:w-[144px] md:h-[144px]",
-    color: "rgba(167,139,250,0.18)",
+    color: "rgba(0,102,204,0.18)",
     delay: 1.1,
     scale: 1.5,
   },
@@ -37,13 +37,11 @@ const RINGS = [
 export default function HeroMicVisual() {
   return (
     <div
-      className="relative w-full max-w-[320px] md:max-w-[400px] h-[304px] md:h-[380px]"
+      className="relative w-full max-w-[320px] md:max-w-[400px] h-[304px] md:h-[380px] product-shadow"
       style={{
-        background: "rgba(9, 9, 11, 0.97)",
-        border: "1px solid rgba(255, 255, 255, 0.07)",
+        background: "#fafafc",
+        border: "1px solid #e0e0e0",
         borderRadius: "24px",
-        boxShadow:
-          "0 32px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
         overflow: "hidden",
       }}
     >
@@ -51,7 +49,7 @@ export default function HeroMicVisual() {
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(0,0,0,0.035) 1px, transparent 1px)",
           backgroundSize: "24px 24px",
           zIndex: 0,
         }}
@@ -66,7 +64,7 @@ export default function HeroMicVisual() {
           left: "50%",
           transform: "translate(-50%, -50%)",
           background:
-            "radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,102,204,0.12) 0%, transparent 70%)",
           pointerEvents: "none",
           zIndex: 1,
         }}
@@ -74,7 +72,7 @@ export default function HeroMicVisual() {
 
       <div
         className="relative flex items-center justify-between px-4 pt-4 pb-3"
-        style={{ zIndex: 2, borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+        style={{ zIndex: 2, borderBottom: "1px solid #e0e0e0" }}
       >
         <div className="flex items-center gap-[6px]">
           <div
@@ -90,10 +88,7 @@ export default function HeroMicVisual() {
             style={{ width: 9, height: 9, background: "#22C55E", opacity: 0.7 }}
           />
         </div>
-        <span
-          className="text-[10px] md:text-xs font-medium"
-          style={{ color: "rgba(255,255,255,0.25)" }}
-        >
+        <span className="text-[10px] md:text-xs font-medium text-ink-muted-48">
           Voicely
         </span>
       </div>
@@ -130,9 +125,9 @@ export default function HeroMicVisual() {
           className="relative flex items-center justify-center rounded-full w-12 h-12 md:w-14 md:h-14"
           style={{
             zIndex: 3,
-            background: "linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)",
+            background: "#0066cc",
             boxShadow:
-              "0 0 0 1px rgba(99,102,241,0.4), 0 8px 24px rgba(79,70,229,0.45)",
+              "0 0 0 1px rgba(0,102,204,0.4), 0 8px 24px rgba(0,102,204,0.45)",
             willChange: "transform",
           }}
           animate={{ scale: [1, 1.05, 1] }}
@@ -197,7 +192,7 @@ export default function HeroMicVisual() {
               key={`bar-${i}`}
               className="w-[2.5px] md:w-[3px] rounded-full"
               style={{
-                background: "rgba(99,102,241,0.7)",
+                background: "rgba(0,102,204,0.7)",
                 willChange: "height",
               }}
               animate={{
@@ -212,10 +207,7 @@ export default function HeroMicVisual() {
           ))}
         </div>
 
-        <p
-          className="text-[10px] md:text-xs font-medium tracking-[0.12em] mt-1"
-          style={{ color: "rgba(167, 139, 250, 0.7)" }}
-        >
+        <p className="text-[10px] md:text-xs font-medium tracking-[0.12em] mt-1 text-apple-blue/70">
           Listening...
         </p>
       </div>
@@ -224,7 +216,7 @@ export default function HeroMicVisual() {
         className="relative mx-4 mt-4"
         style={{
           zIndex: 2,
-          borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+          borderTop: "1px solid #e0e0e0",
         }}
       />
 
@@ -235,38 +227,32 @@ export default function HeroMicVisual() {
         <div
           className="flex items-center gap-1.5 rounded-full px-2 py-1 md:px-2.5 md:py-1 shrink-0"
           style={{
-            background: "rgba(99, 102, 241, 0.12)",
-            border: "1px solid rgba(99, 102, 241, 0.2)",
+            background: "rgba(0, 102, 204, 0.08)",
+            border: "1px solid rgba(0, 102, 204, 0.15)",
           }}
         >
           <div
             className="rounded-full shrink-0"
-            style={{ width: 6, height: 6, background: "#818CF8" }}
+            style={{ width: 6, height: 6, background: "#0066cc" }}
           />
-          <span
-            className="text-[10px] md:text-[11px] font-medium whitespace-nowrap"
-            style={{ color: "rgba(165, 180, 252, 0.85)" }}
-          >
+          <span className="text-[10px] md:text-[11px] font-medium whitespace-nowrap text-apple-blue/80">
             95% accuracy
           </span>
         </div>
 
         <div
           className="shrink-0"
-          style={{ width: 1, height: 12, background: "rgba(255,255,255,0.08)" }}
+          style={{ width: 1, height: 12, background: "#e0e0e0" }}
         />
 
         <div
           className="rounded-full px-2 py-1 md:px-2.5 md:py-1 shrink-0"
           style={{
-            background: "rgba(139, 92, 246, 0.1)",
-            border: "1px solid rgba(139, 92, 246, 0.2)",
+            background: "rgba(0, 102, 204, 0.06)",
+            border: "1px solid rgba(0, 102, 204, 0.15)",
           }}
         >
-          <span
-            className="text-[10px] md:text-[11px] font-medium whitespace-nowrap"
-            style={{ color: "rgba(196, 181, 253, 0.85)" }}
-          >
+          <span className="text-[10px] md:text-[11px] font-medium whitespace-nowrap text-apple-blue/70">
             Hindi · Marathi · EN
           </span>
         </div>
