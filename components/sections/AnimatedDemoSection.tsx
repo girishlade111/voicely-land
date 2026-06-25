@@ -134,29 +134,29 @@ export default function AnimatedDemoSection() {
 
           <div className="relative z-10 p-8 pb-6 sm:p-8 sm:pb-6">
             <div className="mx-auto w-[90%]">
-              <div className="rounded-xl overflow-hidden bg-white shadow-sm">
-                <div className="flex items-center px-4 h-9 bg-zinc-50 border-b border-zinc-100">
+              <div className="rounded-xl overflow-hidden bg-white/[0.07] backdrop-blur-lg border border-white/10 shadow-sm">
+                <div className="flex items-center px-4 h-9 bg-white/[0.05] border-b border-white/10">
                   <div className="flex items-center gap-1.5">
                     <div className="w-[10px] h-[10px] rounded-full" style={{ backgroundColor: "#EF4444" }} />
                     <div className="w-[10px] h-[10px] rounded-full" style={{ backgroundColor: "#F59E0B" }} />
                     <div className="w-[10px] h-[10px] rounded-full" style={{ backgroundColor: "#22C55E" }} />
                   </div>
-                  <span className="text-xs text-zinc-400 mx-auto">New Document</span>
+                  <span className="text-xs text-white/40 mx-auto">New Document</span>
                   <div className="w-12" />
                 </div>
 
                 <div className="p-4 sm:p-4">
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-2 rounded bg-zinc-200" />
-                    <div className="w-6 h-2 rounded bg-zinc-200" />
-                    <div className="w-10 h-2 rounded bg-zinc-200" />
-                    <div className="w-7 h-2 rounded bg-zinc-200" />
+                    <div className="w-8 h-2 rounded bg-white/20" />
+                    <div className="w-6 h-2 rounded bg-white/20" />
+                    <div className="w-10 h-2 rounded bg-white/20" />
+                    <div className="w-7 h-2 rounded bg-white/20" />
                   </div>
-                  <div className="h-px bg-zinc-100 mb-3" />
+                  <div className="h-px bg-white/10 mb-3" />
 
                   <div className="space-y-2 mb-4">
-                    <div className="h-2 w-full rounded bg-zinc-200" />
-                    <div className="h-2 w-3/4 rounded bg-zinc-200" />
+                    <div className="h-2 w-full rounded bg-white/20" />
+                    <div className="h-2 w-3/4 rounded bg-white/20" />
                   </div>
 
                   <div className="min-h-[5rem] sm:min-h-[6rem]">
