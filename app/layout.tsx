@@ -44,6 +44,9 @@ export const metadata: Metadata = {
       "Voicely lets you speak and type anywhere on your desktop. Supports Hindi, Marathi & English.",
     images: ["/og-image.svg"],
   },
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
   robots: {
     index: true,
     follow: true,
