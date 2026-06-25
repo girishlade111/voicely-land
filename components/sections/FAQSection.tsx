@@ -45,7 +45,7 @@ export function FAQSection() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-zinc-50/50">
+    <section id="faq" className="py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

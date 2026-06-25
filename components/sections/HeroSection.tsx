@@ -60,12 +60,11 @@ export function HeroSection() {
               🎙️ Now in Early Access
             </Badge>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-zinc-900 leading-tight tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white/90 leading-tight tracking-tight mb-6">
               Speak. It Types. <br className="hidden sm:block" />
               <span className="text-accent">Anywhere.</span>
             </h1>
-
-            <p className="text-lg text-zinc-500 max-w-lg mb-8 leading-relaxed">
+            <p className="text-lg text-white/60 max-w-lg mb-8 leading-relaxed">
               Voicely turns your voice into text across every app on your
               Mac &mdash; faster than you can type, smarter than you expect.
               Supports Hindi, Marathi &amp; English. Available on macOS 12+.

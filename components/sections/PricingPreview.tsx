@@ -40,10 +40,10 @@ export function PricingPreview() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white/90 mb-4">
             Simple Pricing. No Surprises.
           </h2>
-          <p className="text-lg text-zinc-500">
+          <p className="text-lg text-white/60">
             Start free. Upgrade when you&apos;re ready.
           </p>
         </motion.div>

@@ -27,7 +27,7 @@ export function HowItWorks() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="how-it-works" className="py-16 sm:py-24 bg-zinc-50/50">
+    <section id="how-it-works" className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
