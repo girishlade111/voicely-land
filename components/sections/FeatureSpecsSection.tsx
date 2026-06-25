@@ -4,38 +4,6 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 
-const CommandsSvg = () => (
-  <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <rect x="0" y="0" width="340" height="280" rx="16" fill="white" />
-    <rect x="0" y="0" width="340" height="280" rx="16" stroke="#E4E4E7" strokeWidth="1" />
-    <rect x="16" y="14" width="8" height="8" rx="4" fill="#F87171" />
-    <rect x="30" y="14" width="8" height="8" rx="4" fill="#FBBF24" />
-    <rect x="44" y="14" width="8" height="8" rx="4" fill="#34D399" />
-    <text x="68" y="21" fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A" fontWeight="600">Voice Commands</text>
-    <line x1="0" y1="34" x2="340" y2="34" stroke="#E4E4E7" strokeWidth="1" />
-    {[
-      { icon: "new paragraph", label: "Insert\nparagraph break" },
-      { icon: "undo that", label: "Delete last\nsentence" },
-      { icon: "add email", label: "Insert\nhello@voicely.app" },
-      { icon: "sign off", label: "Insert email\nsignature" },
-    ].map((cmd, i) => (
-      <g key={i}>
-        <rect x="16" y={48 + i * 48} width="24" height="24" rx="8" fill="#EEF2FF" />
-        <path d={["M22 56C24 54 28 58 28 62C28 66 24 62 22 62L16 62", "M22 56C24 54 28 58 28 62C28 66 24 62 22 62L16 62", "M22 56C24 54 28 58 28 62C28 66 24 62 22 62L16 62", "M22 56C24 54 28 58 28 62C28 66 24 62 22 62L16 62"][i]} stroke="#4F46E5" strokeWidth="1.5" fill="none" />
-        <text x="50" y={63 + i * 48} fontFamily="system-ui,sans-serif" fontSize="12" fill="#18181B" fontWeight="600">&ldquo;{cmd.icon}&rdquo;</text>
-        <path d={`M${240} ${60 + i * 48} L${244} ${64 + i * 48} L${240} ${68 + i * 48}`} stroke="#D4D4D8" strokeWidth="1.5" fill="none" />
-        <text x="254" y={64 + i * 48} fontFamily="system-ui,sans-serif" fontSize="11" fill="#71717A">{cmd.label}</text>
-        {i < 3 && <line x1="16" y1={88 + i * 48} x2="324" y2={88 + i * 48} stroke="#F4F4F5" strokeWidth="1" />}
-      </g>
-    ))}
-    <rect x="16" y="244" width="308" height="24" rx="8" fill="#F4F4F5" />
-    <rect x="16" y="244" width="308" height="24" rx="8" stroke="#E4E4E7" strokeWidth="1" strokeDasharray="4 2" />
-    <text x="170" y="259" fontFamily="system-ui,sans-serif" fontSize="11" fill="#4F46E5" fontWeight="600" textAnchor="middle">+ Add Command</text>
-    <rect x="232" y="6" width="92" height="22" rx="11" fill="#4F46E5" />
-    <text x="278" y="21" fontFamily="system-ui,sans-serif" fontSize="10" fill="white" fontWeight="700" textAnchor="middle">Unlimited Commands</text>
-  </svg>
-);
-
 const ShortcutsSvg = () => (
   <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <defs>
@@ -142,59 +110,6 @@ const PunctuationSvg = () => (
     <text x="30" y="286" fontFamily="system-ui,sans-serif" fontSize="10" fill="#71717A">Auto-paragraph on long pause</text>
   </svg>
 );
-
-const FeatureBlockOne = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  return (
-    <div className="bg-white py-20">
-      <div ref={ref} className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <div className="relative">
-              <span className="text-6xl font-black text-indigo-100 absolute -top-8 -left-2 select-none pointer-events-none leading-none">
-                01
-              </span>
-              <p className="text-xs font-semibold tracking-widest text-indigo-600 mb-3 relative z-10">
-                VOICE COMMANDS
-              </p>
-              <h3 className="text-2xl font-bold text-zinc-900 mb-4 relative z-10">
-                Your words. Your rules.
-              </h3>
-              <p className="text-zinc-500 text-sm leading-relaxed mb-6 max-w-md">
-                Train Voicely to respond to your own custom phrases.
-                Say &apos;start new paragraph&apos;, &apos;delete last sentence&apos;, or &apos;add signature&apos; &mdash;
-                Voicely executes it instantly, in any app.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary">New Paragraph</Badge>
-                <Badge variant="secondary">Delete Last Word</Badge>
-                <Badge variant="secondary">Add Signature</Badge>
-                <Badge variant="secondary">Send Email</Badge>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            className="relative"
-          >
-            <div className="w-full max-w-md mx-auto drop-shadow-lg">
-              <CommandsSvg />
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const FeatureBlockTwo = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -331,7 +246,6 @@ const FeatureSpecsSection = () => {
         </div>
       </div>
 
-      <FeatureBlockOne />
       <FeatureBlockTwo />
       <FeatureBlockThree />
     </section>

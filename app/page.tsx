@@ -10,6 +10,7 @@ import PlatformSpecsSection from "@/components/sections/PlatformSpecsSection";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { LanguageSupport } from "@/components/sections/LanguageSupport";
 import { PrivacyBadge } from "@/components/sections/PrivacyBadge";
+import VoiceCommandsSection from "@/components/sections/VoiceCommandsSection";
 import { PricingPreview } from "@/components/sections/PricingPreview";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { FooterCTA } from "@/components/sections/FooterCTA";
@@ -26,6 +27,7 @@ export default function Home() {
         <FeaturesGrid />
         <FeatureSpecsSection />
         <PlatformSpecsSection />
+        <VoiceCommandsSection />
         <HowItWorks />
         <LanguageSupport />
         <PrivacyBadge />
