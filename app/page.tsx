@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
 import PerformanceStatsBar from "@/components/sections/PerformanceStatsBar";
-import { DemoVideo } from "@/components/sections/DemoVideo";
+import AnimatedDemoSection from "@/components/sections/AnimatedDemoSection";
 import SpeedComparisonSection from "@/components/sections/SpeedComparisonSection";
 import { FeaturesGrid } from "@/components/sections/FeaturesGrid";
 import FeatureSpecsSection from "@/components/sections/FeatureSpecsSection";
@@ -21,7 +21,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <PerformanceStatsBar />
-        <DemoVideo />
+        <AnimatedDemoSection />
         <SpeedComparisonSection />
         <FeaturesGrid />
         <FeatureSpecsSection />
