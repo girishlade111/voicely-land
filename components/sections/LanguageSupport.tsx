@@ -30,14 +30,23 @@ export function LanguageSupport() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {languages.map((lang) => (
-              <div
+            {languages.map((lang, i) => (
+              <motion.div
                 key={lang.label}
-                className="bg-white rounded-full shadow-sm px-6 py-3 text-base font-medium text-zinc-800 flex items-center gap-2"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.4, delay: 0.2 + i * 0.15, ease: "easeOut" }}
+                whileHover={{ scale: 1.08, transition: { type: "spring", stiffness: 400, damping: 12 } }}
+                className="bg-white rounded-full shadow-sm px-6 py-3 text-base font-medium text-zinc-800 flex items-center gap-2 cursor-default"
               >
-                <span>{lang.flag}</span>
+                <motion.span
+                  animate={isInView ? { rotate: [0, 10, 0] } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
+                >
+                  {lang.flag}
+                </motion.span>
                 <span>{lang.label}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
 

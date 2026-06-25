@@ -56,6 +56,7 @@ export function PricingPreview() {
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -4, boxShadow: "0 16px 48px rgba(0,0,0,0.08)" }}
             className="bg-white border border-zinc-200 rounded-2xl p-8 shadow-sm"
           >
             <h3 className="text-lg font-semibold text-zinc-900 mb-1">Starter</h3>
@@ -67,33 +68,47 @@ export function PricingPreview() {
               Everything you need to get started
             </p>
             <ul className="space-y-3 mb-8">
-              {starterFeatures.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-sm text-zinc-600">
+              {starterFeatures.map((f, i) => (
+                <motion.li
+                  key={f}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.3, delay: 0.2 + i * 0.06 }}
+                  className="flex items-start gap-3 text-sm text-zinc-600"
+                >
                   <Check className="h-4 w-4 text-accent mt-0.5 shrink-0" />
                   <span>{f}</span>
-                </li>
+                </motion.li>
               ))}
             </ul>
-            <Button
-              variant="outline"
-              className="w-full"
-              onClick={scrollToHero}
-            >
-              Join Waitlist Free
-            </Button>
+            <motion.div whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 400, damping: 15 }}>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={scrollToHero}
+              >
+                Join Waitlist Free
+              </Button>
+            </motion.div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ y: -4, boxShadow: "0 20px 56px rgba(79,70,229,0.15)" }}
             className="bg-white border-2 border-accent rounded-2xl p-8 shadow-xl relative"
           >
-            <div className="absolute -top-3 right-6">
+            <motion.div
+              className="absolute -top-3 right-6"
+              initial={{ scale: 0 }}
+              animate={isInView ? { scale: 1 } : {}}
+              transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.4 }}
+            >
               <Badge variant="default" className="text-xs px-3 py-1">
                 Most Popular
               </Badge>
-            </div>
+            </motion.div>
             <h3 className="text-lg font-semibold text-zinc-900 mb-1">Pro</h3>
             <div className="flex items-baseline gap-1 mb-4">
               <span className="text-4xl font-bold text-zinc-900">Coming Soon</span>
@@ -102,19 +117,32 @@ export function PricingPreview() {
               For power users who live by their voice
             </p>
             <ul className="space-y-3 mb-8">
-              {proFeatures.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-sm text-zinc-600">
+              {proFeatures.map((f, i) => (
+                <motion.li
+                  key={f}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.3, delay: 0.25 + i * 0.06 }}
+                  className="flex items-start gap-3 text-sm text-zinc-600"
+                >
                   <Check className="h-4 w-4 text-accent mt-0.5 shrink-0" />
                   <span>{f}</span>
-                </li>
+                </motion.li>
               ))}
             </ul>
-            <Button className="w-full" onClick={scrollToHero}>
-              Get Notified
-            </Button>
-            <p className="text-xs text-zinc-400 text-center mt-4">
+            <motion.div whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 400, damping: 15 }}>
+              <Button className="w-full" onClick={scrollToHero}>
+                Get Notified
+              </Button>
+            </motion.div>
+            <motion.p
+              className="text-xs text-zinc-400 text-center mt-4"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.6 }}
+            >
               Early waitlist users get exclusive launch pricing 🎁
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </div>

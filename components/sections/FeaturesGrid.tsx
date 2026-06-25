@@ -68,11 +68,16 @@ export function FeaturesGrid() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white border border-zinc-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+              whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(0,0,0,0.08)" }}
+              className="bg-white border border-zinc-100 rounded-2xl p-6 shadow-sm cursor-default"
             >
-              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+              <motion.div
+                className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"
+                whileHover={{ scale: 1.15, backgroundColor: "rgba(79,70,229,0.2)" }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
                 <feature.icon className="h-5 w-5 text-accent" />
-              </div>
+              </motion.div>
               <h3 className="text-lg font-semibold text-zinc-900 mb-2">
                 {feature.title}
               </h3>

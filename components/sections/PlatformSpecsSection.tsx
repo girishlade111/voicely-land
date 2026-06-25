@@ -48,15 +48,24 @@ const PlatformSpecsSection = () => {
               </p>
               <div className="flex flex-col gap-3 items-center md:items-start">
                 {requirements.map((req, i) => (
-                  <div
+                  <motion.div
                     key={i}
-                    className="flex items-center gap-3"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.2 + i * 0.12 }}
+                    whileHover={{ x: 4, transition: { duration: 0.2 } }}
+                    className="flex items-center gap-3 cursor-default"
                   >
-                    <req.icon className="h-4 w-4 text-indigo-500 shrink-0" />
+                    <motion.div
+                      animate={isInView ? { rotate: [0, 360] } : {}}
+                      transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
+                    >
+                      <req.icon className="h-4 w-4 text-indigo-500 shrink-0" />
+                    </motion.div>
                     <span className="text-sm text-zinc-600">
                       {req.text}
                     </span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

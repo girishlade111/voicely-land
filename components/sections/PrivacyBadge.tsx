@@ -30,14 +30,23 @@ export function PrivacyBadge() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">
-            {badges.map((badge) => (
-              <div
+            {badges.map((badge, i) => (
+              <motion.div
                 key={badge.label}
-                className="inline-flex items-center gap-2 bg-zinc-800 text-white rounded-full px-4 py-2 text-sm font-medium"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.4, delay: 0.2 + i * 0.15, ease: "easeOut" }}
+                whileHover={{ scale: 1.06, backgroundColor: "#3f3f46" }}
+                className="inline-flex items-center gap-2 bg-zinc-800 text-white rounded-full px-4 py-2 text-sm font-medium cursor-default"
               >
-                <span>{badge.icon}</span>
+                <motion.span
+                  animate={isInView ? { rotate: [0, -10, 10, 0] } : {}}
+                  transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
+                >
+                  {badge.icon}
+                </motion.span>
                 <span>{badge.label}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

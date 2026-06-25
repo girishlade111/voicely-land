@@ -53,11 +53,16 @@ export function HowItWorks() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.2 }}
-                className="flex flex-col items-center text-center flex-1 lg:flex-none"
+                whileHover={{ y: -4 }}
+                className="flex flex-col items-center text-center flex-1 lg:flex-none cursor-default"
               >
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4">
+                <motion.div
+                  className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4"
+                  whileHover={{ scale: 1.12, backgroundColor: "rgba(79,70,229,0.2)" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                >
                   <span className="text-2xl font-bold text-accent">{step.number}</span>
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-semibold text-zinc-900 mb-2">
                   {step.title}
                 </h3>
@@ -67,9 +72,19 @@ export function HowItWorks() {
               </motion.div>
 
               {i < steps.length - 1 && (
-                <div className="hidden lg:flex items-center px-8">
-                  <ArrowRight className="h-6 w-6 text-zinc-300" />
-                </div>
+                <motion.div
+                  className="hidden lg:flex items-center px-8"
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ delay: 0.3 + i * 0.2 }}
+                >
+                  <motion.div
+                    animate={isInView ? { x: [0, 6, 0] } : {}}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 + i * 0.2 }}
+                  >
+                    <ArrowRight className="h-6 w-6 text-indigo-400" />
+                  </motion.div>
+                </motion.div>
               )}
             </div>
           ))}
