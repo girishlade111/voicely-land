@@ -58,6 +58,14 @@ const SpeedComparisonSection = () => {
           ref={ref}
           className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0"
         >
+          {/* Background waveform decoration */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-[0.03]">
+            <svg viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full max-w-[500px]">
+              {[0,1,2,3,4,5,6,7,8,9,10,11].map(i => (
+                <rect key={i} x={60 + i * 42} y={100 - (i < 6 ? 20 + Math.sin(i) * 10 : 45 + Math.cos(i) * 12)} width="14" height={(i < 6 ? 40 : 90) + Math.floor(Math.sin(i * 1.5) * 15)} rx="4" fill="white"/>
+              ))}
+            </svg>
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -67,6 +75,12 @@ const SpeedComparisonSection = () => {
             <p className="text-xs font-semibold tracking-widest text-zinc-500 mb-6 uppercase">
               Without Voicely
             </p>
+            {/* Slow waveform — typing */}
+            <svg viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-[160px] mb-4 opacity-40">
+              {[0,1,2,3,4,5,6,7,8,9].map(i => (
+                <rect key={i} x={i * 18} y={12 - [6,10,4,8,12,6,10,4,8,6][i]} width="8" height={[12,20,8,16,24,12,20,8,16,12][i]} rx="3" fill="#A1A1AA"/>
+              ))}
+            </svg>
             <div className="text-7xl sm:text-8xl font-black text-zinc-300 leading-none mb-2">
               45
             </div>
@@ -81,11 +95,16 @@ const SpeedComparisonSection = () => {
             </p>
           </motion.div>
 
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-px w-px bg-zinc-800">
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-px w-px bg-gradient-to-b from-transparent via-zinc-800 to-transparent">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <span className="inline-block text-xs font-bold text-white bg-indigo-600 rounded-full px-3 py-1.5 whitespace-nowrap">
-                3× FASTER
-              </span>
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-xl">
+                <circle cx="40" cy="40" r="38" fill="#1C1C1E" stroke="#27272A" strokeWidth="2"/>
+                <rect x="26" y="30" width="6" height="20" rx="2" fill="#4F46E5"/>
+                <rect x="36" y="26" width="6" height="28" rx="2" fill="#4F46E5" opacity="0.7"/>
+                <rect x="46" y="32" width="6" height="16" rx="2" fill="#A5B4FC" opacity="0.5"/>
+                <text x="40" y="72" fontFamily="system-ui,sans-serif" fontSize="10" fill="#A5B4FC" fontWeight="700" textAnchor="middle">3×</text>
+                <path d="M40 78 L38 74 L42 74 Z" fill="#A5B4FC" opacity="0.5"/>
+              </svg>
             </div>
           </div>
 
@@ -98,6 +117,12 @@ const SpeedComparisonSection = () => {
             <p className="text-xs font-semibold tracking-widest text-indigo-400 mb-6 uppercase">
               With Voicely
             </p>
+            {/* Fast waveform — speaking */}
+            <svg viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-[160px] mb-4">
+              {[0,1,2,3,4,5,6,7,8,9,10,11,12,13].map(i => (
+                <rect key={i} x={i * 14} y={12 - [10,16,22,8,18,24,12,20,14,22,8,18,24,12][i]} width="6" height={[20,32,44,16,36,48,24,40,28,44,16,36,48,24][i]} rx="2" fill="#4F46E5"/>
+              ))}
+            </svg>
             <div className="text-7xl sm:text-8xl font-black text-indigo-600 leading-none mb-2">
               {count}+
             </div>
