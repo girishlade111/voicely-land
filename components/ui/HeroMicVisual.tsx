@@ -37,7 +37,7 @@ const RINGS = [
 export default function HeroMicVisual() {
   return (
     <div
-      className="relative w-[320px] h-[304px] md:w-[400px] md:h-[380px]"
+      className="relative w-full max-w-[320px] md:max-w-[400px] h-[304px] md:h-[380px]"
       style={{
         background: "rgba(9, 9, 11, 0.97)",
         border: "1px solid rgba(255, 255, 255, 0.07)",
@@ -47,7 +47,6 @@ export default function HeroMicVisual() {
         overflow: "hidden",
       }}
     >
-      {/* Dot grid background */}
       <div
         className="absolute inset-0"
         style={{
@@ -58,7 +57,6 @@ export default function HeroMicVisual() {
         }}
       />
 
-      {/* Center radial glow */}
       <div
         className="absolute"
         style={{
@@ -74,39 +72,36 @@ export default function HeroMicVisual() {
         }}
       />
 
-      {/* Section 1: Window chrome bar */}
       <div
         className="relative flex items-center justify-between px-4 pt-4 pb-3"
         style={{ zIndex: 2, borderBottom: "1px solid rgba(255,255,255,0.05)" }}
       >
         <div className="flex items-center gap-[6px]">
           <div
-            className="rounded-full"
+            className="rounded-full shrink-0"
             style={{ width: 9, height: 9, background: "#EF4444", opacity: 0.7 }}
           />
           <div
-            className="rounded-full"
+            className="rounded-full shrink-0"
             style={{ width: 9, height: 9, background: "#F59E0B", opacity: 0.7 }}
           />
           <div
-            className="rounded-full"
+            className="rounded-full shrink-0"
             style={{ width: 9, height: 9, background: "#22C55E", opacity: 0.7 }}
           />
         </div>
         <span
-          className="text-xs font-medium"
+          className="text-[10px] md:text-xs font-medium"
           style={{ color: "rgba(255,255,255,0.25)" }}
         >
           Voicely
         </span>
       </div>
 
-      {/* Section 2: Mic visualization area */}
       <div
-        className="relative flex flex-col items-center justify-center flex-1 py-6"
+        className="relative flex flex-col items-center justify-center flex-1 py-4 md:py-6"
         style={{ zIndex: 2, minHeight: 0 }}
       >
-        {/* 3 concentric pulsing rings */}
         {RINGS.map((ring, i) => (
           <motion.div
             key={`ring-${i}`}
@@ -119,6 +114,7 @@ export default function HeroMicVisual() {
               borderColor: ring.color,
               background: "transparent",
               pointerEvents: "none",
+              willChange: "transform, opacity",
             }}
             animate={{ scale: [1, ring.scale], opacity: [1, 0] }}
             transition={{
@@ -130,14 +126,14 @@ export default function HeroMicVisual() {
           />
         ))}
 
-        {/* Mic button */}
         <motion.div
-          className="relative flex items-center justify-center rounded-full w-14 h-14"
+          className="relative flex items-center justify-center rounded-full w-12 h-12 md:w-14 md:h-14"
           style={{
             zIndex: 3,
             background: "linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)",
             boxShadow:
               "0 0 0 1px rgba(99,102,241,0.4), 0 8px 24px rgba(79,70,229,0.45)",
+            willChange: "transform",
           }}
           animate={{ scale: [1, 1.05, 1] }}
           transition={{
@@ -147,11 +143,11 @@ export default function HeroMicVisual() {
           }}
         >
           <svg
-            width="24"
-            height="24"
+            width="20"
+            height="20"
             viewBox="0 0 24 24"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+            className="md:w-6 md:h-6"
           >
             <rect
               x="8.5"
@@ -191,18 +187,19 @@ export default function HeroMicVisual() {
         </motion.div>
       </div>
 
-      {/* Section 3: Waveform + Status */}
       <div
-        className="relative flex flex-col items-center mt-5 gap-2"
+        className="relative flex flex-col items-center mt-4 md:mt-5 gap-2"
         style={{ zIndex: 2 }}
       >
-        {/* 8 waveform bars */}
-        <div className="flex items-end gap-[3px] h-[24px] justify-center">
+        <div className="flex items-end gap-[3px] h-[20px] md:h-[24px] justify-center">
           {BARS.map((bar, i) => (
             <motion.div
               key={`bar-${i}`}
-              className="w-[3px] rounded-full"
-              style={{ background: "rgba(99,102,241,0.7)" }}
+              className="w-[2.5px] md:w-[3px] rounded-full"
+              style={{
+                background: "rgba(99,102,241,0.7)",
+                willChange: "height",
+              }}
               animate={{
                 height: [bar.minH, bar.maxH, bar.minH],
               }}
@@ -216,14 +213,13 @@ export default function HeroMicVisual() {
         </div>
 
         <p
-          className="text-xs font-medium tracking-widest mt-1"
+          className="text-[10px] md:text-xs font-medium tracking-[0.12em] mt-1"
           style={{ color: "rgba(167, 139, 250, 0.7)" }}
         >
           Listening...
         </p>
       </div>
 
-      {/* Section 4: Divider */}
       <div
         className="relative mx-4 mt-4"
         style={{
@@ -232,41 +228,43 @@ export default function HeroMicVisual() {
         }}
       />
 
-      {/* Section 5: Stat row */}
       <div
-        className="relative flex items-center justify-between px-5 py-4"
+        className="relative flex items-center justify-between px-4 md:px-5 py-3 md:py-4"
         style={{ zIndex: 2 }}
       >
         <div
-          className="flex items-center gap-1.5 rounded-full px-2.5 py-1"
+          className="flex items-center gap-1.5 rounded-full px-2 py-1 md:px-2.5 md:py-1 shrink-0"
           style={{
             background: "rgba(99, 102, 241, 0.12)",
             border: "1px solid rgba(99, 102, 241, 0.2)",
           }}
         >
           <div
-            className="rounded-full"
+            className="rounded-full shrink-0"
             style={{ width: 6, height: 6, background: "#818CF8" }}
           />
           <span
-            className="text-[11px] font-medium"
+            className="text-[10px] md:text-[11px] font-medium whitespace-nowrap"
             style={{ color: "rgba(165, 180, 252, 0.85)" }}
           >
             95% accuracy
           </span>
         </div>
 
-        <div style={{ width: 1, height: 12, background: "rgba(255,255,255,0.08)" }} />
+        <div
+          className="shrink-0"
+          style={{ width: 1, height: 12, background: "rgba(255,255,255,0.08)" }}
+        />
 
         <div
-          className="rounded-full px-2.5 py-1"
+          className="rounded-full px-2 py-1 md:px-2.5 md:py-1 shrink-0"
           style={{
             background: "rgba(139, 92, 246, 0.1)",
             border: "1px solid rgba(139, 92, 246, 0.2)",
           }}
         >
           <span
-            className="text-[11px] font-medium"
+            className="text-[10px] md:text-[11px] font-medium whitespace-nowrap"
             style={{ color: "rgba(196, 181, 253, 0.85)" }}
           >
             Hindi · Marathi · EN
