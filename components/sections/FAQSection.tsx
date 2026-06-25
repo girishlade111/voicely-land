@@ -53,10 +53,10 @@ export function FAQSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-semibold tracking-widest text-zinc-400 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
             FAQ
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white/90">
             Frequently Asked Questions
           </h2>
         </motion.div>

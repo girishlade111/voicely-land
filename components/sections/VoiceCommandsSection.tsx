@@ -45,7 +45,7 @@ function CommandCard({
   return (
     <motion.div
       variants={itemVariants}
-      className="relative flex items-center gap-3 bg-white border border-zinc-100 rounded-xl px-4 py-3 shadow-sm"
+      className="relative flex items-center gap-3 glass rounded-xl px-4 py-3"
     >
       <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 text-xs font-bold shrink-0">
         {cmd.icon}
@@ -53,11 +53,11 @@ function CommandCard({
 
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-0.5">
-          <span className="text-[10px] font-semibold tracking-widest text-zinc-400 uppercase">
+          <span className="text-[10px] font-semibold tracking-widest text-white/40 uppercase">
             You said
           </span>
           <motion.span
-            className="text-xs font-medium text-zinc-600"
+            className="text-xs font-medium text-white/70"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: index * 0.15 + 0.3 }}
@@ -94,7 +94,7 @@ export default function VoiceCommandsSection() {
   const badgesInView = useInView(badgeRef, { once: true, amount: 0.5 });
 
   return (
-    <section className="py-20 sm:py-28 bg-zinc-50/50 overflow-hidden">
+    <section className="py-20 sm:py-28 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -103,13 +103,13 @@ export default function VoiceCommandsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-semibold tracking-widest text-zinc-400 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
             VOICE COMMANDS
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white/90 mb-4">
             Speak. It Does.
           </h2>
-          <p className="text-zinc-500 text-sm max-w-lg mx-auto">
+          <p className="text-white/60 text-sm max-w-lg mx-auto">
             Voicely responds to natural phrases &mdash; edit, format, compose,
             and navigate without lifting a finger.
           </p>

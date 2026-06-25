@@ -50,10 +50,10 @@ export function FeaturesGrid() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-semibold tracking-widest text-zinc-400 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
             FEATURES
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white/90">
             Everything You Need, Nothing You Don&apos;t
           </h2>
         </motion.div>
@@ -69,7 +69,7 @@ export function FeaturesGrid() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(0,0,0,0.08)" }}
-              className="bg-white border border-zinc-100 rounded-2xl p-6 shadow-sm cursor-default"
+              className="glass cursor-default"
             >
               <motion.div
                 className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"
@@ -78,10 +78,10 @@ export function FeaturesGrid() {
               >
                 <feature.icon className="h-5 w-5 text-accent" />
               </motion.div>
-              <h3 className="text-lg font-semibold text-zinc-900 mb-2">
+              <h3 className="text-lg font-semibold text-white/90 mb-2">
                 {feature.title}
               </h3>
-              <p className="text-sm text-zinc-500 leading-relaxed">
+              <p className="text-sm text-white/60 leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

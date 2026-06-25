@@ -104,11 +104,11 @@ export function HeroSection() {
               <p className="text-red-500 text-sm mb-4">{message}</p>
             )}
 
-            <p className="text-xs text-zinc-400 mb-6">
+            <p className="text-xs text-white/40 mb-6">
               🔒 No spam. No data stored. Unsubscribe anytime.
             </p>
 
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-white/60">
               Join{" "}
               <CountUp to={1200} label="people waiting for launch" />
             </p>

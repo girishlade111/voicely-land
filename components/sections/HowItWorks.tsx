@@ -35,10 +35,10 @@ export function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-semibold tracking-widest text-zinc-400 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-white/40 mb-4">
             HOW IT WORKS
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white/90">
             Up and Running in 2 Minutes
           </h2>
         </motion.div>
@@ -63,10 +63,10 @@ export function HowItWorks() {
                 >
                   <span className="text-2xl font-bold text-accent">{step.number}</span>
                 </motion.div>
-                <h3 className="text-lg font-semibold text-zinc-900 mb-2">
+                <h3 className="text-lg font-semibold text-white/90 mb-2">
                   {step.title}
                 </h3>
-                <p className="text-sm text-zinc-500 max-w-xs">
+                <p className="text-sm text-white/60 max-w-xs">
                   {step.description}
                 </p>
               </motion.div>

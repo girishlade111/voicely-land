@@ -30,7 +30,7 @@ const SpeedComparisonSection = () => {
   }, [isInView]);
 
   return (
-    <section className="bg-zinc-50 py-16 sm:py-24">
+    <section className="py-16 sm:py-24">
       <div ref={ref} className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="relative">
           <span className="text-6xl font-black text-indigo-100 absolute -top-10 -left-2 select-none pointer-events-none leading-none">
@@ -39,10 +39,10 @@ const SpeedComparisonSection = () => {
           <p className="text-xs font-semibold tracking-widest text-indigo-600 mb-3 relative z-10">
             SPEED
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 relative z-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white/90 mb-4 relative z-10">
             Speak 3x faster than you can type
           </h2>
-          <p className="text-zinc-500 text-sm leading-relaxed max-w-xl mb-12 relative z-10">
+          <p className="text-white/60 text-sm leading-relaxed max-w-xl mb-12 relative z-10">
             The average person types 45 wpm but speaks at 130+ wpm. Voicely bridges that gap instantly.
           </p>
         </div>
@@ -52,33 +52,32 @@ const SpeedComparisonSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-white rounded-2xl border border-zinc-100 p-6 sm:p-8"
+            className="glass p-6 sm:p-8"
           >
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-zinc-100 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"/>
                 </svg>
               </div>
-              <p className="text-sm font-semibold text-zinc-500">Without Voicely</p>
+              <p className="text-sm font-semibold text-white/60">Without Voicely</p>
             </div>
             <div className="flex items-baseline gap-2 mb-1">
-              <span className="text-5xl sm:text-6xl font-black text-zinc-300">45</span>
-              <span className="text-sm text-zinc-400">wpm</span>
+              <span className="text-5xl sm:text-6xl font-black text-white/40">45</span>
+              <span className="text-sm text-white/40">wpm</span>
             </div>
-            <div className="h-2 rounded-full bg-zinc-100 w-[30%] mb-4 overflow-hidden">
-              <div className="h-full w-full rounded-full bg-zinc-300" />
+            <div className="h-2 rounded-full bg-white/10 w-[30%] mb-4 overflow-hidden">
+              <div className="h-full w-full rounded-full bg-white/20" />
             </div>
-            <p className="text-sm text-zinc-400">Average typing speed</p>
+            <p className="text-sm text-white/40">Average typing speed</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="bg-white rounded-2xl border border-indigo-100 p-6 sm:p-8 relative overflow-hidden"
+            className="glass-strong p-6 sm:p-8 relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-50 rounded-bl-[100px] -z-10" />
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -105,7 +104,7 @@ const SpeedComparisonSection = () => {
                 className="h-full rounded-full bg-indigo-600"
               />
             </div>
-            <p className="text-sm text-zinc-500">Speaking speed — no waiting, just flowing</p>
+            <p className="text-sm text-white/60">Speaking speed — no waiting, just flowing</p>
           </motion.div>
         </div>
       </div>
