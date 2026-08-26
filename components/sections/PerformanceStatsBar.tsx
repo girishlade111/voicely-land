@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useCountUp } from "@/lib/use-count-up";
 
 interface StatConfig {
   target: number;
@@ -26,33 +27,7 @@ interface StatBlockProps {
 }
 
 const StatBlock = ({ config, isInView, delay, hasDivider }: StatBlockProps) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    const duration = 1500;
-    const start = performance.now();
-    let rafId: number;
-
-    const step = (now: number) => {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      setCount(Math.round(progress * config.target));
-      if (progress < 1) {
-        rafId = requestAnimationFrame(step);
-      }
-    };
-
-    const timeoutId = setTimeout(() => {
-      rafId = requestAnimationFrame(step);
-    }, delay * 1000);
-
-    return () => {
-      clearTimeout(timeoutId);
-      cancelAnimationFrame(rafId);
-    };
-  }, [isInView, delay, config.target]);
+  const count = useCountUp(config.target, isInView, 1500, delay * 1000);
 
   return (
     <motion.div

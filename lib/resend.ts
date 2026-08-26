@@ -1,9 +1,14 @@
-let resendInstance: import("resend").Resend | null = null;
+let resendInstance: import("resend").Resend | null | undefined;
 
 export async function getResend() {
-  if (!resendInstance) {
-    const { Resend } = await import("resend");
-    resendInstance = new Resend(process.env.RESEND_API_KEY || "");
+  if (resendInstance === undefined) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      resendInstance = null;
+    } else {
+      const { Resend } = await import("resend");
+      resendInstance = new Resend(apiKey);
+    }
   }
   return resendInstance;
 }

@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 
 type Phase = 0 | 1 | 2 | 3 | 4 | 5;
 
+const PHASE_COUNT = 6;
+
 const DEMO_WORDS = [
   "Hey,", "can", "you", "schedule", "a", "team", "meeting",
   "for", "Thursday", "at", "3", "PM?", "Also", "remind",
@@ -12,16 +14,21 @@ const DEMO_WORDS = [
   "before", "the", "call.",
 ];
 
+const WORD_INTERVAL = 250;
+
 const PHASE_DURATIONS: Record<Phase, number> = {
   0: 1000,
   1: 600,
   2: 800,
-  3: DEMO_WORDS.length * 250,
+  3: DEMO_WORDS.length * WORD_INTERVAL,
   4: 1500,
   5: 800,
 };
 
-const WORD_INTERVAL = 250;
+const BAR_HEIGHTS = [6, 8, 6, 8, 6];
+const ACTIVE_BAR_PEAKS = [14, 20, 18, 16, 12];
+const ACTIVE_BAR_DURATIONS = [0.4, 0.3, 0.5, 0.35, 0.45];
+const IDLE_BAR_DURATIONS = [0.5, 0.7, 0.55, 0.75, 0.6];
 
 export default function AnimatedDemoSection() {
   const [phase, setPhase] = useState<Phase>(0);
@@ -30,72 +37,45 @@ export default function AnimatedDemoSection() {
   const [showDone, setShowDone] = useState(false);
 
   const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
-  const sectionRef = useRef<HTMLDivElement>(null);
 
   const clearAllTimeouts = useCallback(() => {
     timeoutsRef.current.forEach(clearTimeout);
     timeoutsRef.current = [];
   }, []);
 
-  const setSafeTimeout = useCallback((fn: () => void, ms: number) => {
-    const id = setTimeout(fn, ms);
-    timeoutsRef.current.push(id);
-    return id;
-  }, []);
-
   useEffect(() => {
     clearAllTimeouts();
-    setTypedWords([]);
-    setIsActive(false);
-    setShowDone(false);
 
-    switch (phase) {
-      case 0: {
-        break;
+    const at = (delayMs: number, fn: () => void) => {
+      timeoutsRef.current.push(setTimeout(fn, delayMs));
+    };
+
+    at(0, () => {
+      if (phase < 2) {
+        setTypedWords([]);
       }
-      case 1: {
-        break;
-      }
-      case 2: {
-        setIsActive(true);
-        break;
-      }
-      case 3: {
-        setIsActive(true);
-        DEMO_WORDS.forEach((_, index) => {
-          setSafeTimeout(() => {
-            setTypedWords(DEMO_WORDS.slice(0, index + 1));
-          }, index * WORD_INTERVAL);
-        });
-        break;
-      }
-      case 4: {
-        setShowDone(true);
-        setSafeTimeout(() => setShowDone(false), 1200);
-        break;
-      }
-      case 5: {
-        break;
-      }
+      setIsActive(phase === 2 || phase === 3);
+      setShowDone(phase === 4);
+    });
+
+    if (phase === 3) {
+      DEMO_WORDS.forEach((_, index) => {
+        at(index * WORD_INTERVAL, () => setTypedWords(DEMO_WORDS.slice(0, index + 1)));
+      });
     }
 
-    const advanceTimeout = setSafeTimeout(() => {
-      setPhase((prev) => {
-        const next = ((prev + 1) % 6) as Phase;
-        return next;
-      });
-    }, PHASE_DURATIONS[phase]);
+    if (phase === 4) {
+      at(1200, () => setShowDone(false));
+    }
 
-    return () => {
-      clearTimeout(advanceTimeout);
-    };
-  }, [phase, clearAllTimeouts, setSafeTimeout]);
+    at(PHASE_DURATIONS[phase], () => setPhase(((phase + 1) % PHASE_COUNT) as Phase));
 
-  useEffect(() => {
-    return () => clearAllTimeouts();
-  }, [clearAllTimeouts]);
+    return clearAllTimeouts;
+  }, [phase, clearAllTimeouts]);
 
   const totalWords = DEMO_WORDS.length;
+  const isRecording = phase >= 1 && phase <= 3;
+  const showCursor = isRecording && typedWords.length < totalWords;
 
   return (
     <section className="bg-white py-16 sm:py-24" id="demo">
@@ -172,7 +152,7 @@ export default function AnimatedDemoSection() {
                           {word}{" "}
                         </motion.span>
                       ))}
-                      {phase >= 1 && typedWords.length < totalWords && (
+                      {showCursor && (
                         <span className="inline-block w-[2px] h-[1.1em] bg-white/80 align-middle" />
                       )}
                       {phase === 0 && (
@@ -188,7 +168,7 @@ export default function AnimatedDemoSection() {
           <div className="relative z-10 pb-8 sm:pb-8 flex justify-center">
             <motion.div
               className={`flex items-center gap-3 px-4 py-2 rounded-full border transition-colors duration-300 ${
-                phase >= 1 && phase <= 3
+                isRecording
                   ? "bg-zinc-800/80 border-apple-blue/40"
                   : "bg-zinc-900 border-zinc-700"
               }`}
@@ -204,11 +184,11 @@ export default function AnimatedDemoSection() {
               <div className="relative">
                 <motion.div
                   animate={
-                    phase >= 1 && phase <= 3
+                    isRecording
                       ? { scale: [1, 1.8, 1], opacity: [0.4, 0, 0] }
                       : {}
                   }
-                  transition={{ duration: 0.6, times: [0, 0.5, 1] }}
+                  transition={{ duration: 0.6, times: [0, 0.5, 1], repeat: Infinity }}
                   className="absolute inset-0 rounded-full bg-apple-blue/30"
                   style={{ width: 24, height: 24, top: -4, left: -4 }}
                 />
@@ -222,7 +202,7 @@ export default function AnimatedDemoSection() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className={
-                    phase >= 1 && phase <= 3
+                    isRecording
                       ? "text-apple-blue relative"
                       : "text-zinc-500 relative"
                   }
@@ -239,70 +219,42 @@ export default function AnimatedDemoSection() {
               </div>
 
               <div className="flex items-center gap-1">
-                {[0, 1, 2, 3, 4].map((i) => {
-                  const heights = {
-                    idle: [6, 8, 6, 8, 6],
-                    mobileIdle: [6, 8, 6],
-                  };
-                  const mobile = false;
-
-                  if (mobile && (i === 1 || i === 3)) return null;
-
-                  const idx = mobile
-                    ? i > 2
-                      ? i - 2
-                      : i
-                    : i;
-                  const isMobileHidden = i === 1 || i === 3;
-
-                  return (
-                    <motion.div
-                      key={i}
-                      className="w-[3px] rounded-full bg-current"
-                      style={{
-                        display: isMobileHidden ? "none" : "block",
-                      }}
-                      animate={
-                        isActive
-                          ? {
-                              height: [
-                                heights.idle[idx % heights.idle.length],
-                                [14, 20, 18, 16, 12][idx],
-                                heights.idle[idx % heights.idle.length],
-                              ],
-                              opacity: 1,
-                            }
-                          : {
-                              height: [heights.idle[idx % heights.idle.length]],
-                            }
-                      }
-                      transition={
-                        isActive
-                          ? {
-                              duration: [0.4, 0.3, 0.5, 0.35, 0.45][idx],
-                              repeat: Infinity,
-                              repeatType: "reverse",
-                              ease: "easeInOut",
-                            }
-                          : { duration: 0.3 }
-                      }
-                      color={
-                        isActive ? "rgb(129 140 248)" : "rgb(113 113 122)"
-                      }
-                    />
-                  );
-                })}
+                {BAR_HEIGHTS.map((baseHeight, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-[3px] rounded-full"
+                    animate={
+                      isActive
+                        ? {
+                            height: [baseHeight, ACTIVE_BAR_PEAKS[i], baseHeight],
+                            backgroundColor: "rgb(129 140 248)",
+                          }
+                        : {
+                            height: [baseHeight, baseHeight],
+                            backgroundColor: "rgb(113 113 122)",
+                          }
+                    }
+                    transition={
+                      isActive
+                        ? {
+                            duration: ACTIVE_BAR_DURATIONS[i],
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "easeInOut",
+                          }
+                        : { duration: IDLE_BAR_DURATIONS[i] }
+                    }
+                  />
+                ))}
               </div>
 
               <div className="flex items-center gap-2">
                 <span
                   className={`text-xs transition-colors duration-300 ${
-                    phase >= 1 && phase <= 3
-                      ? "text-apple-blue"
-                      : "text-zinc-500"
+                    isRecording ? "text-apple-blue" : "text-zinc-500"
                   }`}
                 >
-                  {phase >= 1 && phase <= 3 ? "Listening..." : "⌘⇧Space"}
+                  {isRecording ? "Listening..." : "⌘⇧Space"}
                 </span>
                 {showDone && (
                   <motion.span

@@ -1,33 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useCountUp } from "@/lib/use-count-up";
+
+const SPEAKING_WPM = 135;
 
 const SpeedComparisonSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    const duration = 1500;
-    const start = performance.now();
-    let rafId: number;
-
-    const step = (now: number) => {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      setCount(Math.round(progress * 135));
-      if (progress < 1) {
-        rafId = requestAnimationFrame(step);
-      }
-    };
-
-    rafId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafId);
-  }, [isInView]);
+  const count = useCountUp(SPEAKING_WPM, isInView);
 
   return (
     <section className="py-16 sm:py-24">

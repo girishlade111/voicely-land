@@ -5,6 +5,8 @@ import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+const WAITLIST_COUNT = Number(process.env.NEXT_PUBLIC_WAITLIST_COUNT) || 1200;
+
 export function FooterCTA() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -72,20 +74,15 @@ export function FooterCTA() {
                 onSubmit={handleSubmit}
                 className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6"
               >
-                <motion.div
-                  className="flex-1"
-                  whileFocus={{ scale: 1.01 }}
-                >
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    disabled={status === "loading"}
-                    className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:ring-white/30"
-                  />
-                </motion.div>
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={status === "loading"}
+                  className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:ring-white/30"
+                />
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                   <Button
                     type="submit"
@@ -122,7 +119,7 @@ export function FooterCTA() {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.5 }}
             >
-              Join 1,200+ people already on the list
+              Join {WAITLIST_COUNT.toLocaleString()}+ people already on the list
             </motion.p>
           </motion.div>
         </div>

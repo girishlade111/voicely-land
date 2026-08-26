@@ -6,14 +6,17 @@ import HeroMicVisual from "@/components/ui/HeroMicVisual";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useCountUp } from "@/lib/use-count-up";
+
+const WAITLIST_COUNT = Number(process.env.NEXT_PUBLIC_WAITLIST_COUNT) || 1200;
 
 function CountUp({ to, label }: { to: number; label: string }) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
-  const display = isInView ? to : 0;
+  const count = useCountUp(to, isInView);
   return (
     <span ref={ref} className="font-semibold text-apple-blue">
-      {display.toLocaleString()}+ {label}
+      {count.toLocaleString()}+ {label}
     </span>
   );
 }
@@ -110,7 +113,7 @@ export function HeroSection() {
 
             <p className="text-sm text-white/60">
               Join{" "}
-              <CountUp to={1200} label="people waiting for launch" />
+              <CountUp to={WAITLIST_COUNT} label="people waiting for launch" />
             </p>
           </motion.div>
 

@@ -42,10 +42,13 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 | Script | Command | Description |
 |---|---|---|
-| `dev` | `next dev --turbopack` | Start dev server |
+| `dev` | `next dev` | Start dev server (Turbopack) |
 | `build` | `next build` | Production build |
 | `start` | `next start` | Start production server |
-| `lint` | `next lint` | Run ESLint |
+| `lint` | `eslint .` | Run ESLint |
+| `typecheck` | `tsc --noEmit` | Run TypeScript type checking |
+| `test` | `vitest run` | Run unit tests once |
+| `test:watch` | `vitest` | Run unit tests in watch mode |
 
 ---
 
@@ -72,44 +75,50 @@ app/
 ├── globals.css                 Tailwind v4 styles + custom theme tokens
 ├── layout.tsx                  Root layout, metadata, SEO, favicon
 ├── page.tsx                    Home page composing all sections
+├── about/page.tsx              About page
 ├── privacy-policy/page.tsx     Privacy policy
 ├── refund-policy/page.tsx      Refund policy
 └── terms-of-service/page.tsx   Terms of service
 
 components/
 ├── layout/
-│   ├── Navbar.tsx              Scroll-aware nav, mobile sheet menu
+│   ├── Navbar.tsx              Fixed nav, mobile sheet menu
 │   └── Footer.tsx              4-column footer with legal/social links
 ├── sections/
-│   ├── HeroSection.tsx                  Hero with waitlist form, animated counter, SVG
-│   ├── PerformanceStatsBar.tsx           Animated stat counters
-│   ├── DemoVideo.tsx                     Video player section
-│   ├── SpeedComparisonSection.tsx        45 wpm vs 135+ wpm comparison
-│   ├── FeaturesGrid.tsx                  6-card feature grid (3x3 on desktop)
-│   ├── FeatureSpecsSection.tsx           Deep-dive voice commands, shortcuts, punctuation
-│   ├── PlatformSpecsSection.tsx          macOS requirements, system specs
-│   ├── HowItWorks.tsx                    3-step process
-│   ├── LanguageSupport.tsx               Hindi/Marathi/English badges
-│   ├── PrivacyBadge.tsx                  On-device privacy section
-│   ├── PricingPreview.tsx                2 pricing cards (Free Starter / Pro Coming Soon)
-│   ├── FAQSection.tsx                    Accordion FAQ (7 items)
-│   └── FooterCTA.tsx                     Final waitlist CTA
+│   ├── HeroSection.tsx                  Hero with waitlist form, animated counter
+│   ├── PerformanceStatsBar.tsx          Animated stat counters
+│   ├── AnimatedDemoSection.tsx          Simulated live dictation demo loop
+│   ├── SpeedComparisonSection.tsx       45 wpm vs 135+ wpm comparison
+│   ├── FeaturesGrid.tsx                 6-card feature grid
+│   ├── FeatureSpecsSection.tsx          Deep-dive shortcuts & auto-punctuation
+│   ├── PlatformSpecsSection.tsx         macOS requirements, system specs
+│   ├── HowItWorks.tsx                   3-step process
+│   ├── LanguageSupport.tsx              Hindi/Marathi/English badges
+│   ├── PrivacyBadge.tsx                 On-device privacy section
+│   ├── PricingPreview.tsx               2 pricing cards (Free Starter / Pro Coming Soon)
+│   ├── VoiceCommandsSection.tsx         Voice command showcase
+│   ├── FAQSection.tsx                   Accordion FAQ (7 items)
+│   └── FooterCTA.tsx                    Final waitlist CTA
 └── ui/
     ├── accordion.tsx           Radix Accordion wrapper
-    ├── badge.tsx               Variant badge (default, secondary, outline, indigo)
+    ├── badge.tsx               Variant badge (default, muted, on-dark)
     ├── button.tsx              Variant button with asChild support
+    ├── HeroMicVisual.tsx       Animated hero microphone illustration
     ├── index.ts                Re-exports
     ├── input.tsx               Styled input
     └── sheet.tsx               Radix Dialog sheet (mobile menu)
 
 lib/
-├── resend.ts                   Resend client (lazy singleton)
+├── rate-limit.ts               In-memory fixed-window rate limiter
+├── resend.ts                   Resend client (lazy singleton, null without API key)
 ├── supabase.ts                 Supabase client + admin (lazy from env)
-└── utils.ts                    cn() utility (clsx + tailwind-merge)
+├── use-count-up.ts             Shared animated count-up hook
+├── utils.ts                    cn() utility (clsx + tailwind-merge)
+├── validation.ts               Email validation
+└── *.test.ts                   Vitest unit tests
 
 public/
 ├── favicon.svg                 Site favicon
-├── hero-illustration.svg       Hero section SVG
 ├── og-image.svg                Open Graph / Twitter card (1200×630)
 └── poster-placeholder.svg      Video poster placeholder
 ```
@@ -119,26 +128,27 @@ public/
 ## Components Overview
 
 ### Layout
-- **Navbar** — Fixed header; scroll-aware transparent-to-white background; desktop links (Features, How It Works, Pricing, FAQ) + Join Waitlist button; mobile uses a Radix Sheet slide-in menu.
+- **Navbar** — Fixed black header; desktop links (Features, How It Works, Pricing, FAQ) + Join Waitlist button; mobile uses a Radix Sheet slide-in menu.
 - **Footer** — 4-column grid: brand, product links, company links, legal links; animated scroll-in via `framer-motion`.
 
 ### Sections (in page order)
 
 | Section | Description |
 |---|---|
-| HeroSection | Badge + headline + waitlist form + animated count-up (1,200+) + mic SVG + language pill |
+| HeroSection | Badge + headline + waitlist form + animated count-up (1,200+) + animated mic illustration |
 | PerformanceStatsBar | 4 animated counters (95% accuracy, <500ms latency, 3x faster, on-device) |
-| DemoVideo | HTML5 video player with poster, source from env var |
+| AnimatedDemoSection | Looping simulated dictation demo (shortcut → listening → typed words → done) |
 | SpeedComparisonSection | Two-card layout: 45 wpm typing vs 135+ wpm speaking with 3x badge |
 | FeaturesGrid | 6 cards: Instant Transcription, AI Accuracy, Indian Languages, Privacy, Custom Commands, Free to Start |
-| FeatureSpecsSection | 3 deep-dive cards with inline SVG illustrations |
+| FeatureSpecsSection | 2 deep-dive blocks (global shortcuts, auto-punctuation) with inline SVG illustrations |
 | PlatformSpecsSection | macOS 12+ requirements, M1/Core i5, 4GB RAM, 200MB disk |
 | HowItWorks | 3-step process (Download → Press & Speak → It Types) with connector arrows |
 | LanguageSupport | Hindi/Marathi/English pills + more coming soon |
 | PrivacyBadge | On-device, no data stored, GDPR-ready |
 | PricingPreview | ₹0 Starter (30 min/day) vs Coming Soon Pro (unlimited) |
+| VoiceCommandsSection | Command log mockup, smart-action cards, command categories |
 | FAQSection | 7 Radix Accordion items covering pricing, privacy, requirements, launch |
-| FooterCTA | Full-width indigo→violet gradient with waitlist form |
+| FooterCTA | Dark CTA card with waitlist form |
 
 ---
 
@@ -159,7 +169,10 @@ Saves an email to the Supabase waitlist and sends a confirmation via Resend.
 | 200 | Successfully added to waitlist |
 | 400 | Missing or invalid email |
 | 409 | Email already registered |
+| 429 | Rate limit exceeded (5 requests/min per IP) |
 | 500 | Server error |
+
+Duplicate submissions are handled atomically via the database unique constraint — concurrent requests for the same email receive `409` instead of a server error.
 
 **Supabase schema (`waitlist_emails`):**
 - `id` — UUID primary key
@@ -172,10 +185,10 @@ Saves an email to the Supabase waitlist and sends a confirmation via Resend.
 ## Design Decisions
 
 - **SVG illustrations** are inline React components (not `<img>` or external files) for animation support and direct Tailwind styling.
-- **Feature cards** use `Card` component from `@/components/ui/card` with `framer-motion` stagger animations.
-- **Language support section** uses a gradient background (indigo→violet) to create visual separation.
 - **Waitlist form** appears in both Hero and FooterCTA; both POST to the same endpoint.
-- The `voicely/` directory at project root is an archived Next.js 14 prototype and is excluded from the active build.
+- **Rate limiting** uses a lightweight in-memory fixed-window limiter (5 req/min per IP). For multi-instance deployments, swap in a shared store (e.g., Upstash Redis).
+- **Security headers** (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) are applied to all routes via `next.config.ts`.
+- **Count-up animations** share a single `useCountUp` hook across the hero, stats bar, and speed comparison sections.
 
 ---
 
