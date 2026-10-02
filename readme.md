@@ -207,3 +207,8 @@ Set all environment variables in your Vercel project dashboard. The `NEXT_PUBLIC
 ## License
 
 Private — all rights reserved.
+
+---
+
+Built by Girish Lade — https://ladestack.in
+
