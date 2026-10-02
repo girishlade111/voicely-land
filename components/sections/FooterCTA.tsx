@@ -14,28 +14,16 @@ export function FooterCTA() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setStatus("success");
-        setMessage(data.message);
-      } else {
-        setStatus("error");
-        setMessage(data.message || "Something went wrong. Please try again.");
-      }
-    } catch {
-      setStatus("error");
-      setMessage("Something went wrong. Please try again.");
-    }
+    const subject = encodeURIComponent("Voicely early access — waitlist signup");
+    const body = encodeURIComponent(
+      `Please add me to the Voicely waitlist.\n\nEmail: ${email.trim()}`
+    );
+    window.location.href = `mailto:admin@ladestack.in?subject=${subject}&body=${body}`;
+    setStatus("success");
+    setMessage("Opening your email app — send the message to join the waitlist.");
   };
 
   return (
